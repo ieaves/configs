@@ -23,9 +23,15 @@ brew install realpath
 echo "Installing MDLT"
 npm i -g mdlt
 
-# Setup global gitignore
-echo "Setting up global gitignore"
+
 SCRIPT=`realpath $0`
 SCRIPTPATH=`dirname $SCRIPT`
+
+# Setup global gitignore
+echo "Setting up global gitignore"
 cp $SCRIPTPATH/../git/gitignore_global ~/.gitignore_global
 git config --global core.excludesfile ~/.gitignore_global
+
+# Setup condarc
+echo "Setting up conda condrc"
+cp $SCRIPTPATH/../conda/condarc ~/.condarc

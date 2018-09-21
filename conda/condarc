@@ -1,0 +1,13 @@
+channels:
+  - defaults
+  - conda-forge
+
+always_yes: true
+
+create_default_packages:
+  - jupyter
+  - matplotlib
+  - numpy
+  - scipy
+  - pip
+  - flake8
