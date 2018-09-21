@@ -1,9 +1,8 @@
 #!/bin/bash
 
-cd $CONFIG_DIR
-
 # Theming has to come before zsh_setup
-source ./theming.sh
-source ./zsh_setup.sh
-source ./aliases.sh
-source ./tools.sh
+source $CONFIG_DIR/theming.sh
+source $CONFIG_DIR/aliases.sh
+source $CONFIG_DIR/tools.sh
+source $CONFIG_DIR/zplug.sh
+source $CONFIG_DIR/zsh_setup.sh
