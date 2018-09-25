@@ -1,6 +1,10 @@
 brew tap homebrew/cask-fonts
 
-#ZSH zplug
+# Clone powerlevel9k into oh-my-zsh
+echo "Installing powerlevel9k"
+git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+
+# ZSH zplug
 echo "Installing zplug"
 brew install zplug
 
