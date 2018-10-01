@@ -11,3 +11,4 @@ create_default_packages:
   - scipy
   - pip
   - flake8
+  - cython
