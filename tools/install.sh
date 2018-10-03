@@ -18,6 +18,10 @@ rm math-with-slack.sh
 echo "Installing ranger"
 brew install ranger
 
+# ripgrep
+echo "Installing rip-grep"
+brew install ripgrep
+
 # Realpath
 echo "Installing realpath"
 brew tap iveney/mocha
