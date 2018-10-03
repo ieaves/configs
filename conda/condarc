@@ -5,10 +5,12 @@ channels:
 always_yes: true
 
 create_default_packages:
-  - jupyter
+  - jupyterlab
   - matplotlib
+  - seaborn
   - numpy
   - scipy
+  - pandas
   - pip
   - flake8
   - cython
