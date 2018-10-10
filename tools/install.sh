@@ -31,7 +31,6 @@ brew install realpath
 echo "Installing MDLT"
 npm i -g mdlt
 
-
 SCRIPT=`realpath $0`
 SCRIPTPATH=`dirname $SCRIPT`
 
@@ -43,3 +42,7 @@ git config --global core.excludesfile ~/.gitignore_global
 # Setup condarc
 echo "Setting up conda condrc"
 cp $SCRIPTPATH/../conda/condarc ~/.condarc
+
+# SpaceVim
+echo 'Installing SpaceVim'
+curl -sLf https://spacevim.org/install.sh | bash
