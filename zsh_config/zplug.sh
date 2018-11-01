@@ -10,6 +10,7 @@ zplug "vladmrnv/statify"
 zplug "CorradoRossi/oh-my-zsh-atom-plugin"
 zplug "plugins/git",   from:oh-my-zsh
 zplug "bckim92/zsh-autoswitch-conda"
+zplug "zsh-users/zsh-completions"
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "

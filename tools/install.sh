@@ -45,4 +45,5 @@ cp $SCRIPTPATH/../conda/condarc ~/.condarc
 
 # SpaceVim
 echo 'Installing SpaceVim'
+brew install vim
 curl -sLf https://spacevim.org/install.sh | bash
