@@ -1,3 +1,5 @@
+#!/bin/bash
+
 . /usr/local/lib/python3.7/site-packages/powerline/bindings/zsh/powerline.zsh
 
 # ShureTechMono Nerd Font Regular 13 pt

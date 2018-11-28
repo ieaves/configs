@@ -47,3 +47,34 @@ cp $SCRIPTPATH/../conda/condarc ~/.condarc
 echo 'Installing SpaceVim'
 brew install vim
 curl -sLf https://spacevim.org/install.sh | bash
+
+# autojump
+echo 'Installing autojump'
+brew install autojump
+
+# fzy fuzzy search
+echo 'Installing fzy'
+brew install fzy
+
+# fzy fuzzy search
+echo 'Installing fzf'
+brew install fzf
+$(brew --prefix)/opt/fzf/install
+
+# diff-so-fancy
+echo 'Installing diff-so-fancy'
+brew install diff-so-fancy
+git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
+git config --global color.ui true
+
+git config --global color.diff-highlight.oldNormal    "red bold"
+git config --global color.diff-highlight.oldHighlight "red bold 52"
+git config --global color.diff-highlight.newNormal    "green bold"
+git config --global color.diff-highlight.newHighlight "green bold 22"
+
+git config --global color.diff.meta       "yellow"
+git config --global color.diff.frag       "magenta bold"
+git config --global color.diff.commit     "yellow bold"
+git config --global color.diff.old        "red bold"
+git config --global color.diff.new        "green bold"
+git config --global color.diff.whitespace "red reverse"
