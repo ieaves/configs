@@ -12,6 +12,17 @@ else
   compinit -C
 fi
 
+if [ -z ${POWERLINE_PYTHON+x} ]; then
+  POWERLINE_PYTHON=python3.7;
+fi
+
+if [ -z ${ANACONDA+x} ]; then
+  ANACONDA=miniconda3;
+fi
+
+if [ -z ${USERNAME+x} ]; then
+  USERNAME=ieaves;
+fi
 
 source $CONFIG_DIR/aliases.sh
 

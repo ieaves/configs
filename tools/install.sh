@@ -4,6 +4,11 @@ brew tap homebrew/cask-fonts
 echo "Installing powerlevel9k"
 git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 
+# Powerline
+echo "Installing powerline"
+brew install coreutils
+pip3 install powerline-status
+
 # ZSH zplug
 echo "Installing zplug"
 brew install zplug
