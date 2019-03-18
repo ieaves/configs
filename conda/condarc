@@ -1,6 +1,7 @@
 channels:
   - defaults
   - conda-forge
+  - anaconda-nb-extensions
 
 always_yes: true
 
@@ -14,3 +15,4 @@ create_default_packages:
   - pip
   - flake8
   - cython
+  - nb_conda_kernels 

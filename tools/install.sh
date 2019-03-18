@@ -32,6 +32,10 @@ echo "Installing realpath"
 brew tap iveney/mocha
 brew install realpath
 
+# Node
+echo "Installing Node + npm"
+brew install Node
+
 # MDLT, math utility
 echo "Installing MDLT"
 npm i -g mdlt

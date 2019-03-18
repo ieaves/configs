@@ -5,3 +5,4 @@ alias python=python3
 alias math='mdlt'
 alias run="make -f '~/.runner/Makefile'"
 alias destroy="conda remove --all -n"
+alias create="conda create python=3.7 -n"
