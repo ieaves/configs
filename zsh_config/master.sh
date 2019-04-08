@@ -33,6 +33,7 @@ source $CONFIG_DIR/theming.sh
 source $CONFIG_DIR/conda_prep.sh
 source $CONFIG_DIR/tools.sh
 
+source $CONFIG_DIR/env_setup.sh
 source $CONFIG_DIR/zplug.sh
 source $CONFIG_DIR/zsh_setup.sh
 
