@@ -9,6 +9,12 @@ echo "Installing powerline"
 brew install coreutils
 pip3 install powerline-status
 
+# Nerdfont Complete
+echo "Installing Nerd Fonts"
+brew tap homebrew/cask-fonts
+brew cask install font-hack-nerd-font
+brew cask install font-sharetechmono-nerd-font
+
 # ZSH zplug
 echo "Installing zplug"
 brew install zplug
@@ -90,3 +96,7 @@ git config --global color.diff.whitespace "red reverse"
 
 echo "Installing pyenv"
 brew install pyenv
+pyenv install 3.7.0
+
+echo "Installing psutil"
+pip3 install psutil
