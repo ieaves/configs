@@ -42,6 +42,12 @@ brew install realpath
 echo "Installing Node + npm"
 brew install Node
 
+# Nativefier
+brew install nativefier
+
+# Asana
+nativefier --name "asana" "https://app.asana.com"
+
 # MDLT, math utility
 echo "Installing MDLT"
 npm i -g mdlt
