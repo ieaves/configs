@@ -103,6 +103,7 @@ git config --global color.diff.whitespace "red reverse"
 echo "Installing pyenv"
 brew install pyenv
 pyenv install 3.7.0
+pyenv install 3.8.0
 
 echo "Installing psutil"
 pip3 install psutil
