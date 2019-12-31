@@ -54,10 +54,16 @@ echo "Installing Node + npm"
 brew install Node
 
 # Nativefier
+echo "Installing Nativefier"
 brew install nativefier
 
 # Asana
-nativefier --name "asana" "https://app.asana.com"
+if ! test /Applications/asana-*.app; then
+    echo "Nativefie Asana"
+    nativefier --name "asana" "https://app.asana.com"
+    mv asana-* /Applications
+fi
+
 
 # MDLT, math utility
 echo "Installing MDLT"
@@ -135,3 +141,7 @@ rm polynote-dist.tar.gz
 mv polynote ~/polynote
 
 pip3 install jep jedi pyspark virtualenv
+
+
+echo "Installing HTTPie"
+brew install httpie
