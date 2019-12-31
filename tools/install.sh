@@ -1,3 +1,14 @@
+# Setting up homebrew
+
+if ! type brew &> /dev/null; then
+  echo "Installing Homebrew"
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
+echo "Updating Homebrew"
+brew update && brew upgrade
+
+echo "Getting Homebrew fonts"
 brew tap homebrew/cask-fonts
 
 # Clone powerlevel9k into oh-my-zsh
@@ -107,3 +118,20 @@ pyenv install 3.8.0
 
 echo "Installing psutil"
 pip3 install psutil
+
+echo "installing spark"
+brew install apache-spark
+
+echo "Installing Polynote"
+# Doesn't currently work, installation can't find jep for some reason
+curl -s https://api.github.com/repos/polynote/polynote/releases/latest \
+    | grep "polynote-dist.tar.gz" \
+    | cut -d : -f 2,3 \
+    | tr -d \" \
+    | wget -qi -
+
+tar -zxvpf polynote-dist.tar.gz
+rm polynote-dist.tar.gz
+mv polynote ~/polynote
+
+pip3 install jep jedi pyspark virtualenv
