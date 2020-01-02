@@ -25,6 +25,8 @@ zplug "vladmrnv/statify", defer:3 # provides the calc math command
 zplug "paulmelnikow/zsh-startup-timer"
 zplug "rummik/zsh-tailf" # handles whitespace tab completions
 
+zplug "zsh-users/zsh-history-substring-search"
+
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
     if read -q; then
