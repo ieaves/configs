@@ -21,7 +21,7 @@ if [ -z ${ANACONDA+x} ]; then
 fi
 
 if [ -z ${USERNAME+x} ]; then
-  USERNAME=ieaves;
+  USERNAME=$USER;
 fi
 
 source $CONFIG_DIR/aliases.sh
