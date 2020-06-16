@@ -13,7 +13,7 @@ optional_install(){
 brew_install_check(){
     APPLICATION=$1
     COMMAND=${2:-"brew install $APPLICATION"}
-    if ! brew info $APPLICATION &>/dev/null;
+    if brew info $APPLICATION  | grep "Not installed" &>/dev/null;
     then
         echo "Installing $APPLICATION"
         $COMMAND
@@ -25,7 +25,7 @@ brew_install_check(){
 brew_cask_install_check(){
     APPLICATION=$1
     COMMAND=${2:-"brew cask install $APPLICATION"}
-    if ! brew cask info $APPLICATION &>/dev/null;
+    if brew cask info $APPLICATION  | grep "Not installed" &>/dev/null;
     then
         echo "Installing $APPLICATION"
         $COMMAND

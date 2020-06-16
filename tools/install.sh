@@ -23,6 +23,7 @@ SCRIPTPATH=`dirname $SCRIPT`
 echo "Installing IDEs"
 brew_cask_install_check visual-studio-code
 optional_install atom "brew cask install atom"
+brew_cask_install_check pycharm "brew cask install pycharm"
 
 # Zsh & Associated
 echo "Installing zshell and Oh My Zsh"
@@ -100,7 +101,7 @@ cp $SCRIPTPATH/../conda/condarc ~/.condarc
 # SpaceVim
 echo 'Installing SpaceVim'
 optional_install vim
-curl -sLf https://spacevim.org/install.sh | bash
+folder_install_check '~/.SpaceVim' "curl -sLf https://spacevim.org/install.sh | bash"
 
 # autojump
 echo 'Installing autojump'
@@ -153,17 +154,22 @@ folder_install_check '~/.pyenv/versions/python3.9.0' 'pyenv install 3.9.0'
 
 pyenv global $DEFAULT_PYTHON
 
+
 echo "Installing psutil"
 pip3_install_check psutil
 
-echo "installing spark"
-brew_install_check apache-spark
 
 echo "Installing Java"
 brew_cask_install_check Java
 
+
+echo "installing spark"
+brew_cask_install_check homebrew/cask-versions/adoptopenjdk8
+brew_install_check apache-spark
+
+
 echo "Installing Polynote"
-if [ ! -d ~/polynote ]
+if [ ! -d ~/polynote &> /dev/null ]
 then
   #pip3 install jep jedi pyspark virtualenv
   pip3_install_check jep
@@ -180,7 +186,7 @@ then
 
   tar -zxvpf polynote-dist.tar.gz
   rm polynote-dist.tar.gz
-  if [ ! -d ~/polynote]
+  if [ ! -d ~/polynote &> /dev/null ]
   then
     mv polynote ~/polynote
   fi
@@ -190,6 +196,44 @@ fi
 echo "Installing HTTPie"
 brew_install_check httpie
 
+
 echo "Installing conda"
-#wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O ~/miniconda.sh
-#bash ~/miniconda.sh -b -p $HOME/miniconda
+if [ ! -d ~/miniconda &> /dev/null ] && [ ! -d ~/anaconda3 &> /dev/null ];
+then
+  wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O ~/miniconda.sh
+  bash ~/miniconda.sh -b -p ~/miniconda
+  rm ~/miniconda.sh
+fi
+
+
+# Postman
+brew_cask_install_check postman
+
+
+# R Installation
+brew_install_check openblas
+brew_install_check r
+brew_cask_install_check rstudio
+
+
+# Julia Installation
+brew_cask_install_check julia
+
+
+# Virtualbox & Vagrant
+brew_cask_install_check virtualbox
+brew_cask_install_check vagrant
+brew_cask_install_check vagrant-manager
+
+
+# Docker
+brew_cask_install_check docker
+
+
+# Minikube
+brew_install_check minikube
+
+
+# Cleanup
+brew cask doctor 
+brew cleanup
