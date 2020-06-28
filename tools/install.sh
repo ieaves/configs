@@ -10,6 +10,10 @@ optional_install brew /usr/bin/ruby -e "$(curl -fsSL https://raw.githubuserconte
 echo "Updating Homebrew"
 brew update && brew upgrade
 
+# General tools
+optional_install htop
+
+
 # Realpath
 echo "Installing realpath"
 brew tap iveney/mocha
