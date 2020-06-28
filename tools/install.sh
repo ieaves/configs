@@ -235,5 +235,6 @@ brew_install_check minikube
 
 
 # Cleanup
-brew cask doctor 
 brew cleanup
+brew doctor
+brew cask doctor 
