@@ -67,11 +67,14 @@ expandPath() {
 }
 
 folder_install_check(){
-    FOLDER=$(expandPath $1)
+    FOLDER="$(expandPath $1)"
     COMMAND=$2 #(expandPath $2)
-    if [ ! -d $folder ];
-    then
+    ELSE_MESSAGE=${3:-"$FOLDER already exists"}
+    if [ ! -e "$FOLDER" ]; then
         echo "Executing '$COMMAND'"
-        $COMMAND
+        eval "$COMMAND"
+    else
+        echo "$ELSE_MESSAGE"
     fi
 }
+

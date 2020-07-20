@@ -1,10 +1,12 @@
 #!/bin/bash
 
-. /usr/local/lib/$POWERLINE_PYTHON/site-packages/powerline/bindings/zsh/powerline.zsh
-
 # ShureTechMono Nerd Font Regular 13 pt
 POWERLEVEL9K_MODE='nerdfont-complete'
+
+# Use powerlevel9k
 ZSH_THEME="powerlevel9k/powerlevel9k"
+source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme
+
 
 DEFAULT_FOREGROUND=006
 DEFAULT_BACKGROUND=235
@@ -15,11 +17,12 @@ DEFAULT_COLOR=$DEFAULT_FOREGROUND
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(root_indicator context dir_writable dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time background_jobs status anaconda time ssh)
 
+
 # powerlevel9k prompt theme
 #DEFAULT_USER=$USER
 
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-#POWERLEVEL9K_SHORTEN_STRATEGY="truncate_right"
+POWERLEVEL9K_SHORTEN_STRATEGY=truncate_to_unique
 
 POWERLEVEL9K_DIR_OMIT_FIRST_CHARACTER=false
 

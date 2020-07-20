@@ -7,7 +7,8 @@ source $ZPLUG_HOME/init.zsh
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
 zplug "plugins/git", from:oh-my-zsh, defer:3
-
+zplug "zsh-users/zsh-completions"
+zplug "fabiogibson/envrc-zsh-plugin"
 zplug "zsh-users/zsh-autosuggestions", defer:3
 zplug "zdharma/fast-syntax-highlighting", from:github, defer:2 # faster syntax highlighting
 
@@ -22,7 +23,6 @@ zplug "bckim92/zsh-autoswitch-conda", defer:3
 
 zplug "vladmrnv/statify", defer:3 # provides the calc math command
 
-zplug "paulmelnikow/zsh-startup-timer"
 zplug "rummik/zsh-tailf" # handles whitespace tab completions
 
 zplug "zsh-users/zsh-history-substring-search"

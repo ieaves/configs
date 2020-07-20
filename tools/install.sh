@@ -3,86 +3,79 @@ BASEDIR=$(dirname "$0")
 . $BASEDIR/utilities.sh
 
 # Setting up homebrew
-echo "Installing Homebrew"
-optional_install brew /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
+optional_install brew '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"'
 
 echo "Updating Homebrew"
 brew update && brew upgrade
 
 # General tools
 optional_install htop
+brew_install_check httpie
+brew_install_check wget
+brew_install_check timewarrior
+brew_install_check coreutils
 
+# Task Warrior
+brew_install_check task
 
 # Realpath
-echo "Installing realpath"
 brew tap iveney/mocha
 optional_install realpath
 
-DEFAULT_PYTHON=3.7.0
 SCRIPT=`realpath $0`
 SCRIPTPATH=`dirname $SCRIPT`
 
+optional_install pyenv
+eval "$(pyenv init -)"
+folder_install_check '~/.pyenv/versions' "pyenv versions already provisioned"
+
+folder_install_check '~/.pyenv/versions/3.7.0' 'pyenv install 3.7.0' "pyenv python 3.7.0 already installed"
+folder_install_check '~/.pyenv/versions/3.8.0' 'pyenv install 3.8.0' "pyenv python 3.8.0 already installed"
+folder_install_check '~/.pyenv/versions/3.9.0b3' 'pyenv install 3.9.0b3' "pyenv python 3.9.0b3 already installed"
+
+DEFAULT_PYTHON=3.8.0
+pyenv global $DEFAULT_PYTHON
+
+pip3_install_check psutil
+
+
 # IDEs
-echo "Installing IDEs"
 brew_cask_install_check visual-studio-code
 optional_install atom "brew cask install atom"
 brew_cask_install_check pycharm "brew cask install pycharm"
 
 # Zsh & Associated
-echo "Installing zshell and Oh My Zsh"
 optional_install zsh
 
-folder_install_check ~/.oh-my-zsh "sh -c '$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)'"
-
-
-# Clone powerlevel9k into oh-my-zsh
-echo "Installing powerlevel9k"
-if [ ! -d ~/.oh-my-zsh/custom/themes/powerlevel9k ];
-then
-  git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
-fi
-
-# Powerline
-echo "Installing powerline"
-brew_install_check coreutils
-pip3_install_check powerline-status
+folder_install_check ~/.oh-my-zsh 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"' "oh-my-zsh already installed"
 
 # Nerdfont Complete
-echo "Installing Nerd Fonts"
 brew tap homebrew/cask-fonts
 brew_cask_install_check font-hack-nerd-font
 brew_cask_install_check font-shuretechmono-nerd-font
 
+# Powerlevel 9k / 10k
+brew tap sambadevi/powerlevel9k
+brew install powerlevel9k
+brew_install_check powerlevel10k
+
+
 # ZSH zplug
-echo "Installing zplug"
 brew_install_check zplug
 
 # Slack
-echo "Installing slack"
 brew_cask_install_check slack
 
-# Math with Slack
-# Isn't working since slack 4.0 No updates yet but some possibility here: https://github.com/fsavje/math-with-slack/issues/51
-echo "Installing math-with-slack"
-#curl -OL https://github.com/fsavje/math-with-slack/releases/download/v0.2.5/math-with-slack.sh
-#sudo bash math-with-slack.sh
-#rm math-with-slack.sh
-
 # ranger
-echo "Installing ranger"
 optional_install ranger
 
 # ripgrep
-echo "Installing rip-grep"
 brew_install_check ripgrep
 
 # Node
-echo "Installing Node + npm"
 optional_install Node
 
 # Nativefier
-echo "Installing Nativefier"
 optional_install nativefier
 
 # Asana
@@ -103,9 +96,8 @@ echo "Setting up conda condrc"
 cp $SCRIPTPATH/../conda/condarc ~/.condarc
 
 # SpaceVim
-echo 'Installing SpaceVim'
 optional_install vim
-folder_install_check '~/.SpaceVim' "curl -sLf https://spacevim.org/install.sh | bash"
+folder_install_check '~/.SpaceVim' "curl -sLf https://spacevim.org/install.sh | bash" "pyenv versions already provisioned"
 
 # autojump
 echo 'Installing autojump'
@@ -130,6 +122,7 @@ fi
 echo 'Installing diff-so-fancy'
 if ! type diff-so-fancy &> /dev/null;
 then
+  echo 'Installing diff-so-fancy'
   brew install diff-so-fancy
   git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
   git config --global color.ui true
@@ -149,33 +142,21 @@ else
   echo "diff-so-fancy already installed"
 fi
 
-echo "Installing pyenv"
-optional_install pyenv
 
-folder_install_check '~/.pyenv/versions/python3.7.0' 'pyenv install 3.7.0'
-folder_install_check '~/.pyenv/versions/python3.8.0' 'pyenv install 3.8.0'
-folder_install_check '~/.pyenv/versions/python3.9.0' 'pyenv install 3.9.0'
-
-pyenv global $DEFAULT_PYTHON
-
-
-echo "Installing psutil"
-pip3_install_check psutil
-
-
-echo "Installing Java"
+# Java
 brew_cask_install_check Java
 
 
-echo "installing spark"
+# apache-spark
 brew_cask_install_check homebrew/cask-versions/adoptopenjdk8
 brew_install_check apache-spark
 
 
-echo "Installing Polynote"
-if [ ! -d ~/polynote &> /dev/null ]
-then
-  #pip3 install jep jedi pyspark virtualenv
+# Polynote
+FOLDER="$(expandPath ~/polynote)"
+if [ ! -e "$FOLDER" ]; then
+  echo "Installing Polynote"
+  pip3 install jep jedi pyspark virtualenv
   pip3_install_check jep
   pip3_install_check jedi
   pip3_install_check pyspark
@@ -190,23 +171,23 @@ then
 
   tar -zxvpf polynote-dist.tar.gz
   rm polynote-dist.tar.gz
-  if [ ! -d ~/polynote &> /dev/null ]
-  then
-    mv polynote ~/polynote
+  if [ ! -e "$FOLDER" ]; then
+      mv polynote ~/polynote
   fi
+else
+  echo "Polynote already installed"
 fi
 
 
-echo "Installing HTTPie"
-brew_install_check httpie
-
-
-echo "Installing conda"
-if [ ! -d ~/miniconda &> /dev/null ] && [ ! -d ~/anaconda3 &> /dev/null ];
+# Conda
+if [ ! -d "$(expandPath ~/miniconda)" ] && [ ! -d "$(expandPath ~/anaconda)" ];
 then
+  echo "Installing conda"
   wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O ~/miniconda.sh
   bash ~/miniconda.sh -b -p ~/miniconda
   rm ~/miniconda.sh
+else
+  echo "Conda already installed"
 fi
 
 
@@ -238,7 +219,11 @@ brew_cask_install_check docker
 brew_install_check minikube
 
 
+# Campaudit error fix
+compaudit | xargs chmod g-w
+
+
 # Cleanup
 brew cleanup
 brew doctor
-brew cask doctor 
+brew cask doctor
