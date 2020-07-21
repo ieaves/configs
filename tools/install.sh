@@ -57,23 +57,23 @@ brew_cask_install_check font-shuretechmono-nerd-font
 
 # Installing & Setting up Powerlevle 9k / 10k
 brew tap sambadevi/powerlevel9k
-brew install powerlevel9k
+brew_install_check powerlevel9k
 Clone powerlevel9k into oh-my-zsh
 if [ ! -d "$(expandPath ~/.oh-my-zsh/custom/themes/powerlevel9k)" ];
 then
   git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 else
-  echo "powerlevel 9k already prepated for oh-my-zsh"
+  echo "powerlevel 9k already prepared for oh-my-zsh"
 fi
 
-brew_install_check powerlevel10k
+brew_install_check romkatv/powerlevel10k/powerlevel10k
 # Clone powerlevel9k into oh-my-zsh
 FOLDER="$(expandPath ~/.oh-my-zsh/custom/themes/powerlevel10k)"
 if [ ! -d "$FOLDER" ];
 then
   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
 else
-  echo "powerlevel 10k already prepated for oh-my-zsh"
+  echo "powerlevel 10k already prepared for oh-my-zsh"
 fi
 
 
@@ -81,7 +81,8 @@ fi
 brew_install_check zplug
 
 # Slack
-brew_cask_install_check slack
+folder_install_check /Applications/Slack.app "brew cask install slack"
+#brew_cask_install_check slack
 
 # ranger
 optional_install ranger
@@ -117,26 +118,23 @@ optional_install vim
 folder_install_check '~/.SpaceVim' "curl -sLf https://spacevim.org/install.sh | bash" "pyenv versions already provisioned"
 
 # autojump
-echo 'Installing autojump'
 optional_install autojump
 
 # fzy fuzzy search
-echo 'Installing fzy'
 optional_install fzy
 
 # fzy fuzzy search
-echo 'Installing fzf'
 if ! type fzf &> /dev/null;
 then
-    brew install fzf
-    $(brew --prefix)/opt/fzf/install
+  echo 'Installing fzf'
+  brew install fzf
+  $(brew --prefix)/opt/fzf/install
 else
   echo "fzy fuzzy search already installed"
 fi
 
 
 # diff-so-fancy
-echo 'Installing diff-so-fancy'
 if ! type diff-so-fancy &> /dev/null;
 then
   echo 'Installing diff-so-fancy'
@@ -161,7 +159,7 @@ fi
 
 
 # Java
-brew_cask_install_check Java
+optional_install Java
 
 
 # apache-spark
@@ -214,26 +212,26 @@ brew_cask_install_check postman
 
 # R Installation
 brew_install_check openblas
-brew_install_check r
+optional_install r
 brew_cask_install_check rstudio
 
 
 # Julia Installation
-brew_cask_install_check julia
+optional_install julia
 
 
 # Virtualbox & Vagrant
-brew_cask_install_check virtualbox
-brew_cask_install_check vagrant
+optional_install virtualbox
+optional_install vagrant
 brew_cask_install_check vagrant-manager
 
 
 # Docker
-brew_cask_install_check docker
+optional_install docker
 
 
 # Minikube
-brew_install_check minikube
+optional_install minikube
 
 
 # Campaudit error fix
