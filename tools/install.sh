@@ -33,7 +33,7 @@ folder_install_check '~/.pyenv/versions/3.7.0' 'pyenv install 3.7.0' "pyenv pyth
 folder_install_check '~/.pyenv/versions/3.8.0' 'pyenv install 3.8.0' "pyenv python 3.8.0 already installed"
 folder_install_check '~/.pyenv/versions/3.9.0b3' 'pyenv install 3.9.0b3' "pyenv python 3.9.0b3 already installed"
 
-DEFAULT_PYTHON=3.8.0
+DEFAULT_PYTHON=3.7.0
 pyenv global $DEFAULT_PYTHON
 
 pip3_install_check psutil
@@ -54,10 +54,27 @@ brew tap homebrew/cask-fonts
 brew_cask_install_check font-hack-nerd-font
 brew_cask_install_check font-shuretechmono-nerd-font
 
-# Powerlevel 9k / 10k
+
+# Installing & Setting up Powerlevle 9k / 10k
 brew tap sambadevi/powerlevel9k
 brew install powerlevel9k
+Clone powerlevel9k into oh-my-zsh
+if [ ! -d "$(expandPath ~/.oh-my-zsh/custom/themes/powerlevel9k)" ];
+then
+  git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+else
+  echo "powerlevel 9k already prepated for oh-my-zsh"
+fi
+
 brew_install_check powerlevel10k
+# Clone powerlevel9k into oh-my-zsh
+FOLDER="$(expandPath ~/.oh-my-zsh/custom/themes/powerlevel10k)"
+if [ ! -d "$FOLDER" ];
+then
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
+else
+  echo "powerlevel 10k already prepated for oh-my-zsh"
+fi
 
 
 # ZSH zplug
