@@ -7,3 +7,4 @@ alias run="make -f '~/.runner/Makefile'"
 alias destroy="conda remove --all -n"
 alias create="conda create python=3.8 -n"
 alias polynote="~/polynote/polynote.py"
+alias pycharm='open -a /Applications/PyCharm\ CE.app'
