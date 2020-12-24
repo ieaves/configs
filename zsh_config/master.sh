@@ -13,6 +13,7 @@ else
 fi
 
 eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 if [ -z ${POWERLINE_PYTHON+x} ]; then
   POWERLINE_PYTHON=$(which python3);

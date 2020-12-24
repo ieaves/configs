@@ -6,6 +6,8 @@ BASEDIR=$(dirname "$0")
 optional_install brew '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"'
 
 echo "Updating Homebrew"
+git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch --unshallow
+git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-cask fetch --unshallow
 brew update && brew upgrade
 
 # General tools
@@ -26,12 +28,16 @@ SCRIPT=`realpath $0`
 SCRIPTPATH=`dirname $SCRIPT`
 
 optional_install pyenv
+brew_install_check readline
+brew_install_check xz
+brew_install_check pyenv-virtualenv
+
 eval "$(pyenv init -)"
 folder_install_check '~/.pyenv/versions' "pyenv versions already provisioned"
 
-folder_install_check '~/.pyenv/versions/3.7.0' 'pyenv install 3.7.0' "pyenv python 3.7.0 already installed"
-folder_install_check '~/.pyenv/versions/3.8.0' 'pyenv install 3.8.0' "pyenv python 3.8.0 already installed"
-folder_install_check '~/.pyenv/versions/3.9.0b3' 'pyenv install 3.9.0b3' "pyenv python 3.9.0b3 already installed"
+folder_install_check '~/.pyenv/versions/3.7.0' 'pyenv install 3.7.0 -s' "pyenv python 3.7.0 already installed"
+folder_install_check '~/.pyenv/versions/3.8.0' 'pyenv install 3.8.0 -s' "pyenv python 3.8.0 already installed"
+folder_install_check '~/.pyenv/versions/3.9.0b3' 'pyenv install 3.9.0 -s' "pyenv python 3.9.0b3 already installed"
 
 DEFAULT_PYTHON=3.7.0
 pyenv global $DEFAULT_PYTHON
@@ -41,8 +47,8 @@ pip3_install_check psutil
 
 # IDEs
 brew_cask_install_check visual-studio-code
-optional_install atom "brew cask install atom"
-brew_cask_install_check pycharm "brew cask install pycharm"
+optional_install atom "brew install --cask atom"
+brew_cask_install_check pycharm
 
 # Zsh & Associated
 optional_install zsh
@@ -52,7 +58,7 @@ folder_install_check ~/.oh-my-zsh 'sh -c "$(curl -fsSL https://raw.githubusercon
 # Nerdfont Complete
 brew tap homebrew/cask-fonts
 brew_cask_install_check font-hack-nerd-font
-brew_cask_install_check font-shuretechmono-nerd-font
+brew_cask_install_check font-sharetechmono-nerd-font
 
 
 # Installing & Setting up Powerlevle 9k / 10k
@@ -81,7 +87,7 @@ fi
 brew_install_check zplug
 
 # Slack
-folder_install_check /Applications/Slack.app "brew cask install slack"
+folder_install_check /Applications/Slack.app "brew install --cask slack"
 #brew_cask_install_check slack
 
 # ranger

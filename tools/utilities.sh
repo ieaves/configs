@@ -24,8 +24,8 @@ brew_install_check(){
 
 brew_cask_install_check(){
     APPLICATION=$1
-    COMMAND=${2:-"brew cask install $APPLICATION"}
-    if brew cask info $APPLICATION  | grep "Not installed" &>/dev/null;
+    COMMAND=${2:-"brew install --cask $APPLICATION"}
+    if brew info --cask $APPLICATION  | grep "Not installed" &>/dev/null;
     then
         echo "Installing $APPLICATION"
         $COMMAND
