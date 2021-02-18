@@ -2,6 +2,9 @@
 setup_zsh:
 	@cp ./zshrc ~/.zshrc
 
+## Copy blank fish file over to user folder
+setup_fish:
+	@cp ./linux/config.fish ~/.config/fish/config.fish
 
 
 #################################################################################

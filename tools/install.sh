@@ -1,3 +1,5 @@
+#!/bin/bash
+
 BASEDIR=$(dirname "$0")
 
 . $BASEDIR/utilities.sh
@@ -5,9 +7,10 @@ BASEDIR=$(dirname "$0")
 # Setting up homebrew
 optional_install brew '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"'
 
+
 echo "Updating Homebrew"
-git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch --unshallow
-git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-cask fetch --unshallow
+#git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch --unshallow
+#git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-cask fetch --unshallow
 brew update && brew upgrade
 
 # General tools
@@ -16,6 +19,7 @@ brew_install_check httpie
 brew_install_check wget
 brew_install_check timewarrior
 brew_install_check coreutils
+brew_install_check gcc
 
 # Task Warrior
 brew_install_check task
@@ -37,7 +41,7 @@ folder_install_check '~/.pyenv/versions' "pyenv versions already provisioned"
 
 folder_install_check '~/.pyenv/versions/3.7.0' 'pyenv install 3.7.0 -s' "pyenv python 3.7.0 already installed"
 folder_install_check '~/.pyenv/versions/3.8.0' 'pyenv install 3.8.0 -s' "pyenv python 3.8.0 already installed"
-folder_install_check '~/.pyenv/versions/3.9.0b3' 'pyenv install 3.9.0 -s' "pyenv python 3.9.0b3 already installed"
+folder_install_check '~/.pyenv/versions/3.9.0' 'pyenv install 3.9.0 -s' "pyenv python 3.9.0 already installed"
 
 DEFAULT_PYTHON=3.7.0
 pyenv global $DEFAULT_PYTHON
@@ -61,17 +65,6 @@ brew_cask_install_check font-hack-nerd-font
 brew_cask_install_check font-sharetechmono-nerd-font
 
 
-# Installing & Setting up Powerlevle 9k / 10k
-brew tap sambadevi/powerlevel9k
-brew_install_check powerlevel9k
-Clone powerlevel9k into oh-my-zsh
-if [ ! -d "$(expandPath ~/.oh-my-zsh/custom/themes/powerlevel9k)" ];
-then
-  git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
-else
-  echo "powerlevel 9k already prepared for oh-my-zsh"
-fi
-
 brew_install_check romkatv/powerlevel10k/powerlevel10k
 # Clone powerlevel9k into oh-my-zsh
 FOLDER="$(expandPath ~/.oh-my-zsh/custom/themes/powerlevel10k)"
@@ -86,9 +79,6 @@ fi
 # ZSH zplug
 brew_install_check zplug
 
-# Slack
-folder_install_check /Applications/Slack.app "brew install --cask slack"
-#brew_cask_install_check slack
 
 # ranger
 optional_install ranger
@@ -102,13 +92,6 @@ optional_install Node
 # Nativefier
 optional_install nativefier
 
-# Asana
-if ! test /Applications/asana-*.app; then
-    echo "Nativefie Asana"
-    nativefier --name "asana" "https://app.asana.com"
-    mv asana-* /Applications
-fi
-
 
 # Setup global gitignore
 echo "Setting up global gitignore"
@@ -121,10 +104,7 @@ cp $SCRIPTPATH/../conda/condarc ~/.condarc
 
 # SpaceVim
 optional_install vim
-folder_install_check '~/.SpaceVim' "curl -sLf https://spacevim.org/install.sh | bash" "pyenv versions already provisioned"
-
-# autojump
-optional_install autojump
+folder_install_check '~/.SpaceVim' "curl -sLf https://spacevim.org/install.sh | bash" "spacevim already provisioned"
 
 # fzy fuzzy search
 optional_install fzy
@@ -195,6 +175,7 @@ if [ ! -e "$FOLDER" ]; then
   if [ ! -e "$FOLDER" ]; then
       mv polynote ~/polynote
   fi
+  #brew install polynote
 else
   echo "Polynote already installed"
 fi
@@ -204,7 +185,9 @@ fi
 if [ ! -d "$(expandPath ~/miniconda)" ] && [ ! -d "$(expandPath ~/anaconda)" ];
 then
   echo "Installing conda"
-  wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O ~/miniconda.sh
+  #wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O ~/miniconda.sh
+  # haven't tested on Mac... uname -s -> Linux on linux but may not be MacOSX on OSX
+  wget "https://repo.anaconda.com/miniconda/Miniconda3-latest-$(uname -s)-x86_64.sh" -O ~/miniconda.sh
   bash ~/miniconda.sh -b -p ~/miniconda
   rm ~/miniconda.sh
 else

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Assumes zplug was brew installed
-export ZPLUG_HOME=/usr/local/opt/zplug
+export ZPLUG_HOME=$(brew --prefix)/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
@@ -26,6 +26,7 @@ zplug "vladmrnv/statify", defer:3 # provides the calc math command
 zplug "rummik/zsh-tailf" # handles whitespace tab completions
 
 zplug "zsh-users/zsh-history-substring-search"
+zplug romkatv/powerlevel10k, as:theme, depth:1
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "

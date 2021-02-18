@@ -1,12 +1,18 @@
 #!/bin/bash
 PROFILE=false
 
+if [ ! -d '/home/linuxbrew/.linuxbrew/bin/brew' ];
+then
+    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+fi
+
 if $PROFILE; then
   zmodload zsh/zprof
 fi
 
 autoload -Uz compinit
-if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
+# suppressed errors here because stat fails on linux for some reason
+if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump &> /dev/null)&> /dev/null ]; then
   compinit
 else
   compinit -C

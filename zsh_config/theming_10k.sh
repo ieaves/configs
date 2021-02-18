@@ -5,7 +5,9 @@ POWERLEVEL9K_MODE='nerdfont-complete'
 
 # Use powerlevel10k
 ZSH_THEME="powerlevel10k/powerlevel10k"
-source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
+
+# replaced by invoking from zplug
+# source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 
 
 DEFAULT_FOREGROUND=006
