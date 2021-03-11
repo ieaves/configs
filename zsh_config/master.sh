@@ -1,7 +1,7 @@
 #!/bin/bash
 PROFILE=false
 
-if [ ! -d '/home/linuxbrew/.linuxbrew/bin/brew' ];
+if [ -d '/home/linuxbrew/.linuxbrew/bin/brew' ];
 then
     eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 fi

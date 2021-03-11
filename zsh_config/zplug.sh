@@ -18,7 +18,7 @@ zplug "plugins/autojump", from:oh-my-zsh, defer:3
 
 zplug 'wfxr/forgit', defer:1 # git helper
 
-# zplug "CorradoRossi/oh-my-zsh-atom-plugin", defer:3
+zplug "CorradoRossi/oh-my-zsh-atom-plugin", defer:3
 zplug "bckim92/zsh-autoswitch-conda", defer:3
 
 zplug "vladmrnv/statify", defer:3 # provides the calc math command
