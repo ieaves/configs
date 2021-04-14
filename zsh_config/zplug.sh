@@ -28,6 +28,8 @@ zplug "rummik/zsh-tailf" # handles whitespace tab completions
 zplug "zsh-users/zsh-history-substring-search"
 zplug romkatv/powerlevel10k, as:theme, depth:1
 
+zplug "MichaelAquilina/zsh-autoswitch-virtualenv"
+
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
     if read -q; then

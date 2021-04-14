@@ -47,7 +47,7 @@ DEFAULT_PYTHON=3.7.0
 pyenv global $DEFAULT_PYTHON
 
 pip3_install_check psutil
-
+folder_install_check '~/.poetry' "curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -"
 
 # IDEs
 brew_cask_install_check visual-studio-code

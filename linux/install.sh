@@ -21,6 +21,9 @@ eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 sudo apt install wine64 winbind winetricks
 sudo apt install xclip xsel
 
+sudo groupadd docker
+sudo usermod -aG docker $(whoami)
+newgrp docker
 # SpaceVim
 #sudo apt-get install vim -y
 #curl -sLf https://spacevim.org/install.sh | bash
