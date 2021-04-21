@@ -92,6 +92,8 @@ optional_install Node
 # Nativefier
 optional_install nativefier
 
+# flux
+brew_install_check fluxcd/tap/flux   
 
 # Setup global gitignore
 echo "Setting up global gitignore"
