@@ -1,4 +1,8 @@
-. $$(dirname "$0")/utilities.sh
+#!/bin/bash
+
+BASEDIR=$(dirname "$0")
+
+. $BASEDIR/utilities.sh
 
 brew_cask_install_check spotify
 brew_cask_install_check zoom

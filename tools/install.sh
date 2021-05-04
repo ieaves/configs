@@ -5,7 +5,7 @@ BASEDIR=$(dirname "$0")
 . $BASEDIR/utilities.sh
 
 # Setting up homebrew
-optional_install brew '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"'
+optional_install brew 'sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"'
 
 
 echo "Updating Homebrew"
@@ -20,17 +20,15 @@ brew_install_check wget
 brew_install_check timewarrior
 brew_install_check coreutils
 brew_install_check gcc
-
+brew_install_check autojump
 # Task Warrior
 brew_install_check task
 
-# Realpath
-brew tap iveney/mocha
-optional_install realpath
-
+# Realpath (installed from coreutils)
 SCRIPT=`realpath $0`
 SCRIPTPATH=`dirname $SCRIPT`
 
+# Pyenv
 optional_install pyenv
 brew_install_check readline
 brew_install_check xz
@@ -62,10 +60,11 @@ folder_install_check ~/.oh-my-zsh 'sh -c "$(curl -fsSL https://raw.githubusercon
 # Nerdfont Complete
 brew tap homebrew/cask-fonts
 brew_cask_install_check font-hack-nerd-font
-brew_cask_install_check font-sharetechmono-nerd-font
+brew_cask_install_check font-shure-tech-mono-nerd-font
 
-
+# Powerlevel10k
 brew_install_check romkatv/powerlevel10k/powerlevel10k
+
 # Clone powerlevel9k into oh-my-zsh
 FOLDER="$(expandPath ~/.oh-my-zsh/custom/themes/powerlevel10k)"
 if [ ! -d "$FOLDER" ];
@@ -93,6 +92,7 @@ optional_install Node
 optional_install nativefier
 
 # flux
+brew tap fluxcd/tap
 brew_install_check fluxcd/tap/flux   
 
 # Setup global gitignore
@@ -151,6 +151,7 @@ optional_install Java
 
 
 # apache-spark
+brew tap homebrew/cask-versions
 brew_cask_install_check homebrew/cask-versions/adoptopenjdk8
 brew_install_check apache-spark
 
@@ -159,6 +160,7 @@ brew_install_check apache-spark
 FOLDER="$(expandPath ~/polynote)"
 if [ ! -e "$FOLDER" ]; then
   echo "Installing Polynote"
+  pip3 install --upgrade pip
   pip3 install jep jedi pyspark virtualenv
   pip3_install_check jep
   pip3_install_check jedi
@@ -166,10 +168,11 @@ if [ ! -e "$FOLDER" ]; then
   pip3_install_check virtualenv
 
   # Doesn't currently work, installation can't find jep for some reason
-  curl -s https://api.github.com/repos/polynote/polynote/releases/latest \
+  curl -s https://api.github.com/repos/polynote/polynote/releases \
       | grep "polynote-dist.tar.gz" \
       | cut -d : -f 2,3 \
       | tr -d \" \
+      | head -n 2 \
       | wget -qi -
 
   tar -zxvpf polynote-dist.tar.gz
@@ -187,11 +190,18 @@ fi
 if [ ! -d "$(expandPath ~/miniconda)" ] && [ ! -d "$(expandPath ~/anaconda)" ];
 then
   echo "Installing conda"
-  #wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O ~/miniconda.sh
-  # haven't tested on Mac... uname -s -> Linux on linux but may not be MacOSX on OSX
-  wget "https://repo.anaconda.com/miniconda/Miniconda3-latest-$(uname -s)-x86_64.sh" -O ~/miniconda.sh
+
+  OSNAME="$(uname -s)"
+  if [[ "$OSNAME" == 'Darwin' ]]; then
+    OSNAME='MacOSX'
+  fi
+
+  wget "https://repo.anaconda.com/miniconda/Miniconda3-latest-$OSNAME-x86_64.sh" -O ~/miniconda.sh
   bash ~/miniconda.sh -b -p ~/miniconda
   rm ~/miniconda.sh
+
+  # Install mamba faster alternative
+  conda install mamba -n base -c conda-forge
 else
   echo "Conda already installed"
 fi
@@ -200,6 +210,10 @@ fi
 # Postman
 brew_cask_install_check postman
 
+
+# lua Installation
+# Needed for z.lua
+brew_install_check lua
 
 # R Installation
 brew_install_check openblas
@@ -232,4 +246,3 @@ compaudit | xargs chmod g-w
 # Cleanup
 brew cleanup
 brew doctor
-brew cask doctor

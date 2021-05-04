@@ -1,4 +1,5 @@
 #!/bin/bash
+source $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme
 
 # ShureTechMono Nerd Font Regular 13 pt
 POWERLEVEL9K_MODE='nerdfont-complete'

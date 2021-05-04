@@ -14,7 +14,8 @@ zplug "zdharma/fast-syntax-highlighting", from:github, defer:2 # faster syntax h
 
 zplug "aperezdc/zsh-fzy" # fuzzy search plugin
 zplug "b4b4r07/enhancd", use:"init.sh" # improved cd command
-zplug "plugins/autojump", from:oh-my-zsh, defer:3
+#zplug "plugins/autojump", from:oh-my-zsh, defer:3
+zplug "skywind3000/z.lua"
 
 zplug 'wfxr/forgit', defer:1 # git helper
 

@@ -13,5 +13,9 @@ then
     alias pbcopy='xclip -selection clipboard'
 else
     alias pycharm='open -a /Applications/PyCharm\ CE.app'
+
+    # as per https://github.com/pyenv/pyenv/issues/106
+    alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
+
 fi
 
