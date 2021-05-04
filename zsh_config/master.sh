@@ -39,13 +39,14 @@ if [ -z ${USERNAME+x} ]; then
   USERNAME=$USER;
 fi
 
+source $CONFIG_DIR/zsh_setup.sh
 source $CONFIG_DIR/env_setup.sh
 source $CONFIG_DIR/aliases.sh
 
 # Conda has to be prepared for zsh-autoswitch-conda
 source $CONFIG_DIR/conda_prep.sh
-# Theming has to come before zsh_setup
 source $CONFIG_DIR/zplug.sh
+# Theming has to come before zsh_setup
 #source $CONFIG_DIR/theming_9k.sh
 source $CONFIG_DIR/theming_10k.sh
 
@@ -56,7 +57,7 @@ source $CONFIG_DIR/theming_10k.sh
 
 source $CONFIG_DIR/tools.sh
 
-source $CONFIG_DIR/zsh_setup.sh
+
 
 source $CONFIG_DIR/post_zsh_setup.sh
 

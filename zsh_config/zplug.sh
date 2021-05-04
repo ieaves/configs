@@ -21,6 +21,7 @@ zplug 'wfxr/forgit', defer:1 # git helper
 
 zplug "CorradoRossi/oh-my-zsh-atom-plugin", defer:3
 zplug "bckim92/zsh-autoswitch-conda", defer:3
+zplug "MichaelAquilina/zsh-autoswitch-virtualenv"
 
 zplug "vladmrnv/statify", defer:3 # provides the calc math command
 
