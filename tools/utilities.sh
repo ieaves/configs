@@ -1,6 +1,9 @@
+#!/bin/bash
+
 optional_install(){
     APPLICATION=$1
     COMMAND=${2:-"brew install $APPLICATION"}
+    echo $APPLICATION
     if ! type $APPLICATION &> /dev/null;
     then
         echo "Installing $APPLICATION"
@@ -67,7 +70,7 @@ expandPath() {
 }
 
 folder_install_check(){
-    FOLDER="$(expandPath $1)"
+    FOLDER="$(readlink -f $1)"
     COMMAND=$2 #(expandPath $2)
     ELSE_MESSAGE=${3:-"$FOLDER already exists"}
     if [ ! -e "$FOLDER" ]; then

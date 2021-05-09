@@ -9,7 +9,15 @@ brew_cask_install_check zoom
 
 brew_cask_install_check macdown
 brew_cask_install_check pycharm
-folder_install_check /Applications/Slack.app "brew install --cask slack"
+
+if [ "$(uname -s)" = "Linux" ];
+then 
+    folder_install_check /Applications/Slack.app "brew install --cask slack"
+else
+    folder_install_check /snap/slack "snap install slack"
+
+fi
+
 
 
 # Asana

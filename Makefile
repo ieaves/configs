@@ -6,6 +6,8 @@ setup_zsh:
 setup_fish:
 	@cp ./linux/config.fish ~/.config/fish/config.fish
 
+install:
+	@bash tools/install.sh
 
 #################################################################################
 # Self Documenting Commands                                                     #

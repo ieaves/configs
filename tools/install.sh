@@ -5,7 +5,7 @@ BASEDIR=$(dirname "$0")
 . $BASEDIR/utilities.sh
 
 # Setting up homebrew
-optional_install brew 'sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"'
+optional_install brew 'bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"'
 
 
 echo "Updating Homebrew"
@@ -93,7 +93,7 @@ optional_install nativefier
 
 # flux
 brew tap fluxcd/tap
-brew_install_check fluxcd/tap/flux   
+brew_install_checkb fluxcd/tap/flux   
 
 # Setup global gitignore
 echo "Setting up global gitignore"
