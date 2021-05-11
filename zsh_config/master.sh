@@ -18,8 +18,6 @@ else
   compinit -C
 fi
 
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 
 if [ -z ${POWERLINE_PYTHON+x} ]; then
   POWERLINE_PYTHON=$(which python3);
@@ -56,8 +54,6 @@ source $CONFIG_DIR/theming_10k.sh
 #fi
 
 source $CONFIG_DIR/tools.sh
-
-
 
 source $CONFIG_DIR/post_zsh_setup.sh
 
