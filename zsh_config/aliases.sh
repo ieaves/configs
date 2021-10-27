@@ -1,13 +1,13 @@
 #!/bin/bash
 
 alias python=python3
-#alias ranger='ranger --datadir=~/repos/tooling/ranger'
 alias math='mdlt'
 alias run="make -f '~/.runner/Makefile'"
 alias destroy="conda remove --all -n"
 alias create="conda create python=3.8 -n"
-alias polynote="~/polynote/polynote.py"
+#alias polynote="~/polynote/polynote.py"
 alias deactivate="source deactivate"
+
 if [ "$(uname -s)" = "Linux" ];
 then 
     alias pycharm="pycharm-community $@ </dev/null &>/dev/null &"
@@ -17,6 +17,6 @@ else
 
     # as per https://github.com/pyenv/pyenv/issues/106
     alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
-
+    alias readlink='greadlink'
 fi
 

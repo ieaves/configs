@@ -6,6 +6,7 @@ setup_zsh:
 setup_fish:
 	@cp ./linux/config.fish ~/.config/fish/config.fish
 
+## Install local configs
 install:
 	@bash tools/install.sh
 

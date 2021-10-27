@@ -70,7 +70,12 @@ expandPath() {
 }
 
 folder_install_check(){
-    FOLDER="$(readlink -f $1)"
+    if [ "$(uname -s)" = "Linux" ];
+    then 
+        FOLDER="$(readlink -f $1)"
+    else
+        FOLDER="$(greadlink -f $1)"
+    fi
     COMMAND=$2 #(expandPath $2)
     ELSE_MESSAGE=${3:-"$FOLDER already exists"}
     if [ ! -e "$FOLDER" ]; then

@@ -9,8 +9,6 @@ optional_install brew 'bash -c "$(curl -fsSL https://raw.githubusercontent.com/H
 
 
 echo "Updating Homebrew"
-#git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core fetch --unshallow
-#git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-cask fetch --unshallow
 brew update && brew upgrade
 
 # General tools
@@ -21,8 +19,9 @@ brew_install_check timewarrior
 brew_install_check coreutils
 brew_install_check gcc
 brew_install_check autojump
-# Task Warrior
-brew_install_check task
+brew_install_check pwgen
+brew_install_check ripgrep
+brew_install_check zplug
 
 # Realpath (installed from coreutils)
 SCRIPT=`realpath $0`
@@ -40,16 +39,21 @@ folder_install_check '~/.pyenv/versions' "pyenv versions already provisioned"
 folder_install_check '~/.pyenv/versions/3.7.0' 'pyenv install 3.7.0 -s' "pyenv python 3.7.0 already installed"
 folder_install_check '~/.pyenv/versions/3.8.0' 'pyenv install 3.8.0 -s' "pyenv python 3.8.0 already installed"
 folder_install_check '~/.pyenv/versions/3.9.0' 'pyenv install 3.9.0 -s' "pyenv python 3.9.0 already installed"
+folder_install_check '~/.pyenv/versions/3.10.0' 'pyenv install 3.10.0 -s' "pyenv python 3.10.0 already installed"
 
-DEFAULT_PYTHON=3.7.0
+DEFAULT_PYTHON=3.10.0
 pyenv global $DEFAULT_PYTHON
 
+# Python general Utils
 pip3_install_check psutil
-folder_install_check '~/.poetry' "curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -"
+
+# Poetry
+brew_install_check poetry
 
 # IDEs
 brew_cask_install_check visual-studio-code
-optional_install atom "brew install --cask atom"
+brew_cask_install_check atom
+#optional_install atom "brew install --cask atom"
 brew_cask_install_check pycharm
 
 # Zsh & Associated
@@ -62,38 +66,29 @@ brew tap homebrew/cask-fonts
 brew_cask_install_check font-hack-nerd-font
 brew_cask_install_check font-shure-tech-mono-nerd-font
 
+## No longer need this as it's been moved to zplug
 # Powerlevel10k
-brew_install_check romkatv/powerlevel10k/powerlevel10k
+#brew_install_check romkatv/powerlevel10k/powerlevel10k
 
 # Clone powerlevel9k into oh-my-zsh
-FOLDER="$(expandPath ~/.oh-my-zsh/custom/themes/powerlevel10k)"
-if [ ! -d "$FOLDER" ];
-then
-  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
-else
-  echo "powerlevel 10k already prepared for oh-my-zsh"
-fi
+#FOLDER="$(expandPath ~/.oh-my-zsh/custom/themes/powerlevel10k)"
+#if [ ! -d "$FOLDER" ];
+#then
+#  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
+#else
+#  echo "powerlevel 10k already prepared for oh-my-zsh"
+#fi
 
-
-# ZSH zplug
-brew_install_check zplug
-
-
-# ranger
-optional_install ranger
-
-# ripgrep
-brew_install_check ripgrep
-
-# Node
-optional_install Node
-
-# Nativefier
+# Folder Based general utils
 optional_install nativefier
+optional_install Node
+optional_install ranger
+optional_install fzy
+optional_install Java
 
 # flux
 brew tap fluxcd/tap
-brew_install_checkb fluxcd/tap/flux   
+brew_install_check fluxcd/tap/flux   
 
 # Setup global gitignore
 echo "Setting up global gitignore"
@@ -108,8 +103,6 @@ cp $SCRIPTPATH/../conda/condarc ~/.condarc
 optional_install vim
 folder_install_check '~/.SpaceVim' "curl -sLf https://spacevim.org/install.sh | bash" "spacevim already provisioned"
 
-# fzy fuzzy search
-optional_install fzy
 
 # fzy fuzzy search
 if ! type fzf &> /dev/null;
@@ -146,10 +139,6 @@ else
 fi
 
 
-# Java
-optional_install Java
-
-
 # apache-spark
 brew tap homebrew/cask-versions
 brew_cask_install_check homebrew/cask-versions/adoptopenjdk8
@@ -157,33 +146,7 @@ brew_install_check apache-spark
 
 
 # Polynote
-FOLDER="$(expandPath ~/polynote)"
-if [ ! -e "$FOLDER" ]; then
-  echo "Installing Polynote"
-  pip3 install --upgrade pip
-  pip3 install jep jedi pyspark virtualenv
-  pip3_install_check jep
-  pip3_install_check jedi
-  pip3_install_check pyspark
-  pip3_install_check virtualenv
-
-  # Doesn't currently work, installation can't find jep for some reason
-  curl -s https://api.github.com/repos/polynote/polynote/releases \
-      | grep "polynote-dist.tar.gz" \
-      | cut -d : -f 2,3 \
-      | tr -d \" \
-      | head -n 2 \
-      | wget -qi -
-
-  tar -zxvpf polynote-dist.tar.gz
-  rm polynote-dist.tar.gz
-  if [ ! -e "$FOLDER" ]; then
-      mv polynote ~/polynote
-  fi
-  #brew install polynote
-else
-  echo "Polynote already installed"
-fi
+brew_install_check polynote
 
 
 # Conda
