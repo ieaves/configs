@@ -1,0 +1,17 @@
+version: '3'
+
+tasks:
+  prep:
+    desc: 'Setup app specific configs i.e. `task prep -- alacritty`'
+    cmds:
+      - bash ./app_configs/{{.CLI_ARGS}}/setup.sh
+
+  prep_apps:
+    desc: 'Copy all app specific configs'
+    cmds:
+      - find ./app_configs -type f -name setup.sh | xargs bash
+  
+  setup_zsh:
+    desc: 'Sets zshrc file to reference this repository'
+    cmds:
+      - bash ./tools/prep_zsh.sh

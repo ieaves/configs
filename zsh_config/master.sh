@@ -46,7 +46,7 @@ source $CONFIG_DIR/conda_prep.sh
 source $CONFIG_DIR/zplug.sh
 # Theming has to come before zsh_setup
 #source $CONFIG_DIR/theming_9k.sh
-source $CONFIG_DIR/theming_10k.sh
+#source $CONFIG_DIR/theming_10k.sh
 
 
 #if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then

@@ -5,7 +5,7 @@ BASEDIR=$(dirname "$0")
 . $BASEDIR/utilities.sh
 
 # Setting up homebrew
-optional_install brew 'bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"'
+optional_install brew 'bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh -c"'
 
 
 echo "Updating Homebrew"
@@ -65,6 +65,7 @@ folder_install_check ~/.oh-my-zsh 'sh -c "$(curl -fsSL https://raw.githubusercon
 brew tap homebrew/cask-fonts
 brew_cask_install_check font-hack-nerd-font
 brew_cask_install_check font-shure-tech-mono-nerd-font
+brew_cask_install_check font-meslo-lg-nerd-font
 
 ## No longer need this as it's been moved to zplug
 # Powerlevel10k

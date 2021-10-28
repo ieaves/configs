@@ -20,3 +20,5 @@ else
     alias readlink='greadlink'
 fi
 
+alias merge_kubeconfig
+
