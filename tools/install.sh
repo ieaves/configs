@@ -14,6 +14,7 @@ brew update && brew upgrade
 # General tools
 optional_install htop
 brew_install_check httpie
+brew_install_check curl
 brew_install_check wget
 brew_install_check timewarrior
 brew_install_check coreutils
@@ -22,6 +23,13 @@ brew_install_check autojump
 brew_install_check pwgen
 brew_install_check ripgrep
 brew_install_check zplug
+brew_install_check virtualenv
+brew_install_check openblas
+brew_install_check lapack
+brew_install_check geos
+brew_cask_install_check obsidian
+brew_cask_install_check mark-text
+brew_cask_install_check speedcrunch
 
 # Realpath (installed from coreutils)
 SCRIPT=`realpath $0`
@@ -42,7 +50,7 @@ folder_install_check '~/.pyenv/versions/3.9.0' 'pyenv install 3.9.0 -s' "pyenv p
 folder_install_check '~/.pyenv/versions/3.10.0' 'pyenv install 3.10.0 -s' "pyenv python 3.10.0 already installed"
 
 DEFAULT_PYTHON=3.10.0
-pyenv global $DEFAULT_PYTHON
+p
 
 # Python general Utils
 pip3_install_check psutil
@@ -53,7 +61,6 @@ brew_install_check poetry
 # IDEs
 brew_cask_install_check visual-studio-code
 brew_cask_install_check atom
-#optional_install atom "brew install --cask atom"
 brew_cask_install_check pycharm
 
 # Zsh & Associated
@@ -180,7 +187,6 @@ brew_cask_install_check postman
 brew_install_check lua
 
 # R Installation
-brew_install_check openblas
 optional_install r
 brew_cask_install_check rstudio
 

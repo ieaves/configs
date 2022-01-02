@@ -1,12 +1,13 @@
 #!/bin/bash
 
-alias python=python3
+#alias python=python3
+alias pip=pip3
 alias math='mdlt'
 alias run="make -f '~/.runner/Makefile'"
-alias destroy="conda remove --all -n"
-alias create="conda create python=3.8 -n"
+#alias destroy="conda remove --all -n"
+#alias create="conda create python=3.8 -n"
 #alias polynote="~/polynote/polynote.py"
-alias deactivate="source deactivate"
+#alias deactivate="source deactivate"
 
 if [ "$(uname -s)" = "Linux" ];
 then 
