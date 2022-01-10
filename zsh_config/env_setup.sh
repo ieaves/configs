@@ -49,4 +49,10 @@ else
     # Openblas
     export OPENBLAS="$(brew --prefix openblas)"
     export CFLAGS="-falign-functions=8 ${CFLAGS}"
+
+    # Curl
+    export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+    export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig"
 fi
+
+
