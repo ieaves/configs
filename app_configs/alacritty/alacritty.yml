@@ -20,4 +20,7 @@ glyph_offset:
   y: -10.0
 
 size: 30.0
-  
+
+key_bindings:
+  - { key: V, mods: Control, action: Paste }
+  - { key: C, mods: Control, action: Copy }
