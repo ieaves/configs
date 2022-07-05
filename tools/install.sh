@@ -27,9 +27,14 @@ brew_install_check virtualenv
 brew_install_check openblas
 brew_install_check lapack
 brew_install_check geos
+brew_install_check kubectl
+brew_install_check krew
+brew_install_check pipx
 brew_cask_install_check obsidian
 brew_cask_install_check mark-text
 brew_cask_install_check speedcrunch
+
+pipx ensurepath
 
 # Realpath (installed from coreutils)
 SCRIPT=`realpath $0`

@@ -4,6 +4,7 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 
 # zsh-autoswitch
 export venv_type="poetry"
+
 # Default autoswitch python
 export AUTOSWITCH_DEFAULT_PYTHON="$PYENV_ROOT/versions/3.10.0/bin/python3"
 
@@ -22,12 +23,13 @@ export _ZL_MATCH_MODE=1
 
 # Kustomize Plugin Path
 export XDG_CONFIG_HOME=\$HOME/.config
+export PATH="${PATH}:${HOME}/.krew/bin"
 
 if [ "$(uname -s)" = "Linux" ];
 then 
 else
     # If you need to update CFLAGS or LDFLAGS installed by brew, add the package name to `applications`
-    applications=('xz', 'lapack', 'curl')
+    applications=('xz', 'lapack', 'curl', 'ruby')
 
     var=""
     for app in "${applications[@]}"
