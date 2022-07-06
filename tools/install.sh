@@ -29,6 +29,7 @@ brew_install_check lapack
 brew_install_check geos
 brew_install_check kubectl
 brew_install_check krew
+brew install_check thefuck
 brew_install_check pipx
 brew_cask_install_check obsidian
 brew_cask_install_check mark-text
