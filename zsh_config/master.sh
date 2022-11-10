@@ -53,6 +53,9 @@ source $CONFIG_DIR/zplug.sh
 source $CONFIG_DIR/tools.sh
 source $CONFIG_DIR/post_zsh_setup.sh
 
+zstyle ':completion:*' menu select
+fpath+=~/.zfunc
+
 if $PROFILE; then
   zprof
 fi

@@ -25,27 +25,25 @@ export _ZL_MATCH_MODE=1
 export XDG_CONFIG_HOME=\$HOME/.config
 export PATH="${PATH}:${HOME}/.krew/bin"
 
+# LLVM
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+
 if [ "$(uname -s)" = "Linux" ];
 then 
 else
     # If you need to update CFLAGS or LDFLAGS installed by brew, add the package name to `applications`
-    applications=('xz', 'lapack', 'curl', 'ruby')
+    applications=('xz' 'lapack' 'curl' 'ruby' 'llvm' 'zlib' 'openssl@3' 'readline')
 
-    var=""
+    ldflags=""
+    cppflags=""
     for app in "${applications[@]}"
     do
-        name="-L$(brew --prefix xz)/lib "
-        var=$var$name
+        name="$(brew --prefix ${app})"
+        ldflags="$ldflags -L$name/lib"
+        cppflags="$cppflags -I$name/include"
     done
-    export LDFLAGS=$var
-
-    var=""
-    for app in "${applications[@]}"
-    do
-        name="-L$(brew --prefix xz)/include "
-        var=$var$name
-    done
-    export CPPFLAGS=$var
+    export LDFLAGS="$(echo $ldflags | xargs)"
+    export CPPFLAGS="$(echo $cppflags | xargs)"
 
 
     # Openblas
@@ -55,6 +53,23 @@ else
     # Curl
     export PATH="/opt/homebrew/opt/curl/bin:$PATH"
     export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig"
+
+    # Openssl
+    export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
+
+    # zlib
+    export PATH="/opt/homebrew/opt/zlib/bin:$PATH"
+
+    # SQLlite
+    export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
 fi
 
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+
+
+# Pipx 
+export PATH="$PATH:/Users/ian/.local/bin"
 
