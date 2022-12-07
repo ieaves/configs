@@ -1,6 +1,11 @@
+REPO_DIR=`pwd`
+
 ## Copy blank zsh file over to user folder
 setup_zsh:
-	@cp ./zshrc ~/.zshrc
+	@echo "CONFIG_DIR=$(REPO_DIR)/zsh_config" > zshrc
+	@cat ./zsh_config/zshrc >>  zshrc
+	@mv zshrc ~/.zshrc
+
 
 ## Copy blank fish file over to user folder
 setup_fish:
@@ -9,6 +14,7 @@ setup_fish:
 ## Install basic requirements
 install:
 	@bash tools/install.sh
+
 
 #################################################################################
 # Self Documenting Commands                                                     #
