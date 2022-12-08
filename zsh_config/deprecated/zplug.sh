@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Assumes zplug was brew installed
+Assumes zplug was brew installed
 export ZPLUG_HOME=$(brew --prefix)/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
@@ -18,18 +18,12 @@ zplug "skywind3000/z.lua"
 
 zplug 'wfxr/forgit', defer:1 # git helper
 
-zplug "CorradoRossi/oh-my-zsh-atom-plugin", defer:3
-#zplug "bckim92/zsh-autoswitch-conda", defer:3
-
 zplug "MichaelAquilina/zsh-autoswitch-virtualenv"
-
-zplug "vladmrnv/statify", defer:3 # provides the calc math command
 
 zplug "rummik/zsh-tailf" # handles whitespace tab completions
 
 zplug "zsh-users/zsh-history-substring-search"
-zplug romkatv/powerlevel10k, as:theme, depth:1
-
+zplug "romkatv/powerlevel10k", as:theme, depth:1
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "

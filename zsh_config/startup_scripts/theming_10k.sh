@@ -1,5 +1,4 @@
 #!/bin/bash
-source $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme
 
 # ShureTechMono Nerd Font Regular 13 pt
 POWERLEVEL9K_MODE='nerdfont-complete'
@@ -7,8 +6,6 @@ POWERLEVEL9K_MODE='nerdfont-complete'
 # Use powerlevel10k
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# replaced by invoking from zplug
-# source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 
 
 DEFAULT_FOREGROUND=006
@@ -69,7 +66,7 @@ typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
     # swap                  # used swap
     todo                    # todo items (https://github.com/todotxt/todo.txt-cli)
     #timewarrior             # timewarrior tracking status (https://timewarrior.net/)
-    taskwarrior             # taskwarrior task count (https://taskwarrior.org/)
+    #taskwarrior             # taskwarrior task count (https://taskwarrior.org/)
     time                    # current time
     #ip                    # ip address and bandwidth usage for a specified network interface
     #public_ip             # public IP address

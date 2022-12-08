@@ -1,5 +1,5 @@
 #!/bin/bash
-PROFILE=false
+PROFILE=${PROFILE:-false}
 
 if [ -d '/home/linuxbrew/.linuxbrew/bin/brew' ];
 then
@@ -16,6 +16,14 @@ if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump &> /dev/null)&> /dev/
   compinit
 else
   compinit -C
+fi
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+export POWERLEVEL9K_INSTANT_PROMPT=verbose
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 
@@ -38,20 +46,13 @@ if [ -z ${USERNAME+x} ]; then
 fi
 
 # Theming has to come before zsh_setup
-source $CONFIG_DIR/theming_10k.sh
-
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-source $CONFIG_DIR/zsh_setup.sh
-source $CONFIG_DIR/env_setup.sh
-source $CONFIG_DIR/aliases.sh
-# Conda has to be prepared for zsh-autoswitch-conda
-source $CONFIG_DIR/conda_prep.sh
-source $CONFIG_DIR/zplug.sh
-source $CONFIG_DIR/tools.sh
-source $CONFIG_DIR/post_zsh_setup.sh
+BOOT_SCRIPTS_DIR=$CONFIG_DIR/startup_scripts
+source $BOOT_SCRIPTS_DIR/theming_10k.sh
+source $BOOT_SCRIPTS_DIR/env_setup.sh
+source $BOOT_SCRIPTS_DIR/aliases.sh
+source $BOOT_SCRIPTS_DIR/utilities.sh
+source $BOOT_SCRIPTS_DIR/antidote.sh
+unset BOOT_SCRIPTS_DIR
 
 zstyle ':completion:*' menu select
 fpath+=~/.zfunc

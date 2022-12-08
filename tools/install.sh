@@ -16,25 +16,25 @@ optional_install htop
 brew_install_check httpie
 brew_install_check curl
 brew_install_check wget
-brew_install_check timewarrior
 brew_install_check coreutils
 brew_install_check gcc
 brew_install_check autojump
 brew_install_check pwgen
 brew_install_check ripgrep
 brew_install_check zplug
+brew_install_check antidote
 brew_install_check virtualenv
 brew_install_check openblas
 brew_install_check lapack
 brew_install_check geos
 brew_install_check kubectl
 brew_install_check krew
-brew install_check thefuck
-brew_install_check pipx
 brew_cask_install_check obsidian
 brew_cask_install_check mark-text
 brew_cask_install_check speedcrunch
 
+# pipx installation & setup
+brew_install_check pipx
 pipx ensurepath
 
 # Realpath (installed from coreutils)
@@ -49,14 +49,12 @@ brew_install_check pyenv-virtualenv
 
 eval "$(pyenv init -)"
 folder_install_check '~/.pyenv/versions' "pyenv versions already provisioned"
-
 folder_install_check '~/.pyenv/versions/3.7.0' 'pyenv install 3.7.0 -s' "pyenv python 3.7.0 already installed"
 folder_install_check '~/.pyenv/versions/3.8.0' 'pyenv install 3.8.0 -s' "pyenv python 3.8.0 already installed"
 folder_install_check '~/.pyenv/versions/3.9.0' 'pyenv install 3.9.0 -s' "pyenv python 3.9.0 already installed"
 folder_install_check '~/.pyenv/versions/3.10.0' 'pyenv install 3.10.0 -s' "pyenv python 3.10.0 already installed"
 
 DEFAULT_PYTHON=3.10.0
-p
 
 # Python general Utils
 pip3_install_check psutil
@@ -66,7 +64,6 @@ brew_install_check poetry
 
 # IDEs
 brew_cask_install_check visual-studio-code
-brew_cask_install_check atom
 brew_cask_install_check pycharm
 
 # Zsh & Associated
@@ -84,15 +81,6 @@ brew_cask_install_check font-meslo-lg-nerd-font
 # Powerlevel10k
 #brew_install_check romkatv/powerlevel10k/powerlevel10k
 
-# Clone powerlevel9k into oh-my-zsh
-#FOLDER="$(expandPath ~/.oh-my-zsh/custom/themes/powerlevel10k)"
-#if [ ! -d "$FOLDER" ];
-#then
-#  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
-#else
-#  echo "powerlevel 10k already prepared for oh-my-zsh"
-#fi
-
 # Folder Based general utils
 optional_install nativefier
 optional_install Node
@@ -100,9 +88,6 @@ optional_install ranger
 optional_install fzy
 optional_install Java
 
-# flux
-brew tap fluxcd/tap
-brew_install_check fluxcd/tap/flux   
 
 # Setup global gitignore
 echo "Setting up global gitignore"
@@ -113,9 +98,9 @@ git config --global core.excludesfile ~/.gitignore_global
 echo "Setting up conda condrc"
 cp $SCRIPTPATH/../conda/condarc ~/.condarc
 
-# SpaceVim
+# Vim prep
 optional_install vim
-folder_install_check '~/.SpaceVim' "curl -sLf https://spacevim.org/install.sh | bash" "spacevim already provisioned"
+brew_install_check neovim
 
 
 # fzy fuzzy search
@@ -159,9 +144,6 @@ brew_cask_install_check homebrew/cask-versions/adoptopenjdk8
 brew_install_check apache-spark
 
 
-# Polynote
-brew_install_check polynote
-
 
 # Conda
 if [ ! -d "$(expandPath ~/miniconda)" ] && [ ! -d "$(expandPath ~/anaconda)" ];
@@ -201,18 +183,8 @@ brew_cask_install_check rstudio
 optional_install julia
 
 
-# Virtualbox & Vagrant
-optional_install virtualbox
-optional_install vagrant
-brew_cask_install_check vagrant-manager
-
-
 # Docker
 optional_install docker
-
-
-# Minikube
-optional_install minikube
 
 
 # Campaudit error fix

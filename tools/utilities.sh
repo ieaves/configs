@@ -3,7 +3,6 @@
 optional_install(){
     APPLICATION=$1
     COMMAND=${2:-"brew install $APPLICATION"}
-    echo $APPLICATION
     if ! type $APPLICATION &> /dev/null;
     then
         echo "Installing $APPLICATION"
@@ -12,6 +11,7 @@ optional_install(){
         echo "$APPLICATION already installed"
     fi
 }
+
 
 brew_install_check(){
     APPLICATION=$1
@@ -25,6 +25,7 @@ brew_install_check(){
     fi
 }
 
+
 brew_cask_install_check(){
     APPLICATION=$1
     COMMAND=${2:-"brew install --cask $APPLICATION"}
@@ -37,6 +38,7 @@ brew_cask_install_check(){
     fi
 }
 
+
 pip3_install_check(){
     APPLICATION=$1
     COMMAND=${2:-"pip3 install $APPLICATION"}
@@ -48,6 +50,20 @@ pip3_install_check(){
         echo "$APPLICATION already installed by pip"
     fi
 }
+
+
+pipx_install_check(){
+    APPLICATION=$1
+    COMMAND=${2:-"pipx install $APPLICATION"}
+    if ! pipx list | grep $APPLICATION &>/dev/null;
+    then
+        echo "pipx installing $APPLICATION"
+        $COMMAND
+    else
+        echo "$APPLICATION already installed by pipx"
+    fi
+}
+
 
 expandPath() {
   case $1 in
@@ -68,6 +84,7 @@ expandPath() {
       ;;
   esac
 }
+
 
 folder_install_check(){
     if [ "$(uname -s)" = "Linux" ];

@@ -18,6 +18,15 @@ export PATH="$HOME/.poetry/bin:$PATH"
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
+# ZSH COMPDUMP
+export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
+
+export ANTIDOTE_DIR=$(brew --prefix)/opt/antidote/share/antidote
+
+# ZSH Autoquoter configs
+# export ZAQ_PREFIXES=('git commit -m' 'ssh *')
+# export ZSH_HIGHLIGHT_HIGHLIGHTERS+=(zaq)
+
 # For z.lua directory jumping
 export _ZL_MATCH_MODE=1
 
@@ -45,7 +54,7 @@ else
     export LDFLAGS="$(echo $ldflags | xargs)"
     export CPPFLAGS="$(echo $cppflags | xargs)"
 
-
+    unset name ldflags cppflags applications
     # Openblas
     export OPENBLAS="$(brew --prefix openblas)"
     export CFLAGS="-falign-functions=8 ${CFLAGS}"
