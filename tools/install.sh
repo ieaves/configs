@@ -18,7 +18,6 @@ brew_install_check curl
 brew_install_check wget
 brew_install_check coreutils
 brew_install_check gcc
-brew_install_check autojump
 brew_install_check pwgen
 brew_install_check ripgrep
 brew_install_check zplug
@@ -29,13 +28,14 @@ brew_install_check lapack
 brew_install_check geos
 brew_install_check kubectl
 brew_install_check krew
+brew_install_check fortune
 brew_cask_install_check obsidian
 brew_cask_install_check mark-text
 brew_cask_install_check speedcrunch
 
 # pipx installation & setup
 brew_install_check pipx
-pipx ensurepath
+#pipx ensurepath
 
 # Realpath (installed from coreutils)
 SCRIPT=`realpath $0`
@@ -49,14 +49,23 @@ brew_install_check pyenv-virtualenv
 
 eval "$(pyenv init -)"
 folder_install_check '~/.pyenv/versions' "pyenv versions already provisioned"
-folder_install_check '~/.pyenv/versions/3.7.0' 'pyenv install 3.7.0 -s' "pyenv python 3.7.0 already installed"
-folder_install_check '~/.pyenv/versions/3.8.0' 'pyenv install 3.8.0 -s' "pyenv python 3.8.0 already installed"
-folder_install_check '~/.pyenv/versions/3.9.0' 'pyenv install 3.9.0 -s' "pyenv python 3.9.0 already installed"
-folder_install_check '~/.pyenv/versions/3.10.0' 'pyenv install 3.10.0 -s' "pyenv python 3.10.0 already installed"
 
-DEFAULT_PYTHON=3.10.0
+INSTALL_VERSIONS=("3.8.16" "3.9.6" "3.10.1" "3.11.1")
+INSTALLED_VERSIONS=$(pyenv versions)
+
+for ver in "${INSTALL_VERSIONS[@]}"
+do
+    if ! echo "$INSTALLED_VERSIONS" | grep -q ${ver} ; then
+        pyenv install ${ver}
+    else
+        echo "pyenv python ${ver} already installed"
+    fi
+done
+unset INSTALL_VERSIONS INSTALLED_VERSIONS
+
 
 # Python general Utils
+pip3 install -U pip
 pip3_install_check psutil
 
 # Poetry
@@ -188,7 +197,7 @@ optional_install docker
 
 
 # Campaudit error fix
-compaudit | xargs chmod g-w
+compaudit #| xargs chmod g-w
 
 
 # Cleanup

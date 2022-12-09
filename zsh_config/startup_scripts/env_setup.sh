@@ -1,6 +1,7 @@
 # Pyenv
 export PYENV_ROOT="$(pyenv root)"
 export PATH="$PYENV_ROOT/bin:$PATH"
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 # zsh-autoswitch
 export venv_type="poetry"
@@ -24,8 +25,8 @@ export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 export ANTIDOTE_DIR=$(brew --prefix)/opt/antidote/share/antidote
 
 # ZSH Autoquoter configs
-# export ZAQ_PREFIXES=('git commit -m' 'ssh *')
-# export ZSH_HIGHLIGHT_HIGHLIGHTERS+=(zaq)
+export ZAQ_PREFIXES=('git commit -m' 'ssh *')
+export ZSH_HIGHLIGHT_HIGHLIGHTERS=ZSH_HIGHLIGHT_HIGHLIGHTERS+(zaq)
 
 # For z.lua directory jumping
 export _ZL_MATCH_MODE=1
@@ -75,7 +76,6 @@ fi
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 
 

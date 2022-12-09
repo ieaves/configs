@@ -1,7 +1,9 @@
 #!/bin/bash
 
-#alias python=python3
+#These two fix a startup issue with zsh-autoswitch-virtualenv
+alias python=python3
 alias pip=pip3
+
 #alias destroy="conda remove --all -n"
 #alias create="conda create python=3.8 -n"
 #alias polynote="~/polynote/polynote.py"
