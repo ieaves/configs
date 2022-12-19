@@ -48,7 +48,7 @@ brew_install_check xz
 brew_install_check pyenv-virtualenv
 
 eval "$(pyenv init -)"
-folder_install_check '~/.pyenv/versions' "pyenv versions already provisioned"
+folder_install_check ~/.pyenv/versions "mkdir ~/.pyenv/versions" "pyenv versions already provisioned"
 
 INSTALL_VERSIONS=("3.8.16" "3.9.6" "3.10.1" "3.11.1")
 INSTALLED_VERSIONS=$(pyenv versions)
@@ -69,7 +69,7 @@ pip3 install -U pip
 pip3_install_check psutil
 
 # Poetry
-folder_install_check ${POETRY_HOME:-"~/Library/Application Support/pypoetry"} "curl -sSL https://install.python-poetry.org | python3 -" "poetry already installed"
+folder_install_check "${POETRY_HOME:-$HOME/Library/Application\ Support/pypoetry}" "curl -sSL https://install.python-poetry.org | python3 -" "poetry already installed"
 
 # IDEs
 brew_cask_install_check visual-studio-code
@@ -194,10 +194,6 @@ optional_install julia
 
 # Docker
 optional_install docker
-
-
-# Campaudit error fix
-compaudit #| xargs chmod g-w
 
 
 # Cleanup

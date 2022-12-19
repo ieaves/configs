@@ -87,13 +87,21 @@ expandPath() {
 
 
 folder_install_check(){
+    FOLDER="${1/#\~/$HOME}" # Replaces ~ with the path to $HOME
+
+    # Expands symlinks like '..'
     if [ "$(uname -s)" = "Linux" ];
     then 
-        FOLDER="$(readlink -f $1)"
+        FOLDER=`readlink -m "$FOLDER"`
     else
-        FOLDER="$(greadlink -f $1)"
+        FOLDER=`greadlink -m "$FOLDER"`
     fi
-    COMMAND=$2 #(expandPath $2)
+
+    # Handling for files with spaces in their names. Allows the user to provide the path
+    # as either '/PartA\ PartB' or 'PartA PartB'
+    FOLDER=`echo $FOLDER | sed "s/[\]//g"`
+
+    COMMAND=$2 #\\(expandPath $2)
     ELSE_MESSAGE=${3:-"$FOLDER already exists"}
     if [ ! -e "$FOLDER" ]; then
         echo "Executing '$COMMAND'"
