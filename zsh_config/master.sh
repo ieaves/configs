@@ -13,7 +13,7 @@ if $PROFILE; then
   zmodload zsh/zprof
 fi
 
-autoload -Uz compinit
+autoload -Uz +X compinit
 # suppressed errors here because stat fails on linux for some reason
 if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump &> /dev/null)&> /dev/null ]; then
   compinit
@@ -58,8 +58,11 @@ source $BOOT_SCRIPTS_DIR/utilities.sh
 source $BOOT_SCRIPTS_DIR/antidote.sh
 unset BOOT_SCRIPTS_DIR
 
+source <(kubectl completion zsh)
+
 zstyle ':completion:*' menu select
 fpath+=~/.zfunc
+
 
 if $PROFILE; then
   zprof

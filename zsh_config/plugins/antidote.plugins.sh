@@ -18,3 +18,11 @@ MichaelAquilina/zsh-autoswitch-virtualenv
 zsh-users/zsh-history-substring-search
 zsh-users/zsh-autosuggestions
 zdharma-continuum/fast-syntax-highlighting
+
+# Autocompletions
+sinetoami/antibody-completion
+3v1n0/zsh-bash-completions-fallback
+MenkeTechnologies/zsh-cargo-completion
+zsh-users/zsh-completions
+chr-fritz/docker-completion.zshplugin
+sunlei/zsh-ssh
