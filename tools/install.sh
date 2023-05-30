@@ -65,11 +65,11 @@ unset INSTALL_VERSIONS INSTALLED_VERSIONS
 
 
 # Python general Utils
-pip3 install -U pip
-pip3_install_check psutil
+# pip3 install -U pip
+# pip3_install_check psutil
 
 # Poetry
-folder_install_check "${POETRY_HOME:-$HOME/Library/Application\ Support/pypoetry}" "curl -sSL https://install.python-poetry.org | python3 -" "poetry already installed"
+optional_install poetry "pipx install poetry"
 
 # IDEs
 brew_cask_install_check visual-studio-code

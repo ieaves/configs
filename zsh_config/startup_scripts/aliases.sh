@@ -8,6 +8,8 @@ alias k=kubectl
 #alias create="conda create python=3.8 -n"
 #alias polynote="~/polynote/polynote.py"
 #alias deactivate="source deactivate"
+alias ls=exa
+alias cat=bat
 
 if [ "$(uname -s)" = "Linux" ];
 then 

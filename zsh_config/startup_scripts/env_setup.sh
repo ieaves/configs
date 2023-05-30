@@ -13,8 +13,9 @@ export AUTOSWITCH_DEFAULT_PYTHON="$PYENV_ROOT/versions/3.10.0/bin/python3"
 export PATH="/usr/local/sbin:$PATH"
 
 # Poetry
-export PATH="$HOME/.poetry/bin:$PATH"
-export POETRY_HOME="~/Library/Application Support/pypoetry"
+export POETRY_HOME="$HOME/.configs/pypoetry"
+export PATH="$POETRY_HOME:$PATH"
+
 
 # Use vi
 export VISUAL=vim
@@ -43,7 +44,7 @@ if [ "$(uname -s)" = "Linux" ];
 then 
 else
     # If you need to update CFLAGS or LDFLAGS installed by brew, add the package name to `applications`
-    applications=('xz' 'lapack' 'curl' 'ruby' 'llvm' 'zlib' 'openssl@3' 'readline')
+    applications=('xz' 'lapack' 'curl' 'ruby' 'llvm' 'zlib' 'openssl@3' 'readline' 'unixodbc')
 
     ldflags=""
     cppflags=""

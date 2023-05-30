@@ -1,14 +1,12 @@
 #!/bin/bash
 
 optional_install(){
-    APPLICATION=$1
-    COMMAND=${2:-"brew install $APPLICATION"}
-    if ! type $APPLICATION &> /dev/null;
-    then
-        echo "Installing $APPLICATION"
-        $COMMAND
+    if ! command -v "$1" >/dev/null 2>&1; then
+        # If the command is not available, install it
+        echo "The command '$1' is not installed. Installing..."
+        eval "$2"
     else
-        echo "$APPLICATION already installed"
+        echo "$1 already installed"
     fi
 }
 
