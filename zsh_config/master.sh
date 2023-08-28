@@ -29,11 +29,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-
-# if [ -z ${POWERLINE_PYTHON+x} ]; then
-#   POWERLINE_PYTHON=$(which python3);
-# fi
-
 if [ -z ${ANACONDA+x} ]; then
   if [ -d ~/anaconda3 ]; then
       ANACONDA=anaconda3
@@ -51,15 +46,17 @@ fi
 # Theming has to come before zsh_setup
 BOOT_SCRIPTS_DIR=$CONFIG_DIR/startup_scripts
 
+
 source $BOOT_SCRIPTS_DIR/theming_10k.sh
 source $BOOT_SCRIPTS_DIR/env_setup.sh
 source $BOOT_SCRIPTS_DIR/aliases.sh
 source $BOOT_SCRIPTS_DIR/utilities.sh
 source $BOOT_SCRIPTS_DIR/antidote.sh
+
+
 unset BOOT_SCRIPTS_DIR
 
 source <(kubectl completion zsh)
-
 zstyle ':completion:*' menu select
 fpath+=~/.zfunc
 

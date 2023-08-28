@@ -33,6 +33,9 @@ brew_cask_install_check obsidian
 brew_cask_install_check mark-text
 brew_cask_install_check speedcrunch
 
+# Setup Konfig
+kubectl krew install konfig
+
 # pipx installation & setup
 brew_install_check pipx
 #pipx ensurepath

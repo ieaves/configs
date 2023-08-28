@@ -16,7 +16,7 @@ then
     alias pycharm="pycharm-community $@ </dev/null &>/dev/null &"
     alias pbcopy='xclip -selection clipboard'
 else
-    alias pycharm='open -a /Applications/PyCharm\ CE.app'
+    alias pycharm='open -a /Applications/PyCharm.app'
 
     # as per https://github.com/pyenv/pyenv/issues/106
     alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'

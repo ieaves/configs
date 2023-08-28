@@ -2,6 +2,8 @@ REPO_DIR=`pwd`
 
 ## Copy blank zsh file over to user folder
 setup_zsh:
+	@touch zshrc
+	@echo "#!/bin/bash" > zshrc
 	@echo "CONFIG_DIR=$(REPO_DIR)/zsh_config" > zshrc
 	@cat ./zsh_config/zshrc >>  zshrc
 	@mv zshrc ~/.zshrc

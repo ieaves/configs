@@ -16,6 +16,9 @@ export PATH="/usr/local/sbin:$PATH"
 export POETRY_HOME="$HOME/.configs/pypoetry"
 export PATH="$POETRY_HOME:$PATH"
 
+# Pipx
+export PATH="$PATH:$HOME/.local/bin"
+
 
 # Use vi
 export VISUAL=vim
@@ -82,7 +85,7 @@ command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 
 
 # Pipx 
-export PATH="$PATH:/Users/ian/.local/bin"
+# export PATH="$PATH:/Users/ian/.local/bin"
 
 # Jetbrains
-export PATH="/Users/jetbrains/.local/bin:$PATH"
+# export PATH="/Users/jetbrains/.local/bin:$PATH"
