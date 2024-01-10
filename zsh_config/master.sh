@@ -13,11 +13,15 @@ if $PROFILE; then
   zmodload zsh/zprof
 fi
 
-autoload -Uz +X compinit
+autoload -Uz +X compinit promptinit
+
 # suppressed errors here because stat fails on linux for some reason
+# checks whether the current day of the year is different from the modification day of the year
 if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump &> /dev/null)&> /dev/null ]; then
+  promptinit
   compinit
 else
+  promptinit -C
   compinit -C
 fi
 
