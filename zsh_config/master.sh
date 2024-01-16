@@ -1,5 +1,4 @@
 #!/bin/bash
-
 export $(cat ${CONFIG_DIR}/settings.txt | xargs)
 
 PROFILE=${PROFILE:-false}

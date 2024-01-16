@@ -37,7 +37,7 @@ export ZSH_HIGHLIGHT_HIGHLIGHTERS=ZSH_HIGHLIGHT_HIGHLIGHTERS+(zaq)
 export _ZL_MATCH_MODE=1
 
 # Kustomize Plugin Path
-export XDG_CONFIG_HOME=\$HOME/.config
+export XDG_CONFIG_HOME="$HOME/.config"
 export PATH="${PATH}:${HOME}/.krew/bin"
 
 # LLVM
