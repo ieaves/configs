@@ -7,6 +7,8 @@ ohmyzsh/ohmyzsh path:plugins/colored-man-pages
 ohmyzsh/ohmyzsh path:plugins/magic-enter
 ohmyzsh/ohmyzsh path:plugins/1password
 ohmyzsh/ohmyzsh path:plugins/hitchhiker
+ohmyzsh/ohmyzsh path:plugins/1password
+ohmyzsh/ohmyzsh path:plugins/aws
 
 romkatv/zsh-bench kind:path
 
@@ -26,3 +28,4 @@ MenkeTechnologies/zsh-cargo-completion
 zsh-users/zsh-completions
 chr-fritz/docker-completion.zshplugin
 sunlei/zsh-ssh
+ohmyzsh/ohmyzsh path:plugins/pyenv

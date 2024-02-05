@@ -29,6 +29,7 @@ brew_install_check geos
 brew_install_check kubectl
 brew_install_check krew
 brew_install_check fortune
+brew_install_check eza
 brew_cask_install_check obsidian
 brew_cask_install_check mark-text
 brew_cask_install_check speedcrunch
@@ -94,7 +95,6 @@ brew_cask_install_check font-meslo-lg-nerd-font
 #brew_install_check romkatv/powerlevel10k/powerlevel10k
 
 # Folder Based general utils
-optional_install nativefier
 optional_install Node
 optional_install ranger
 optional_install fzy
@@ -152,10 +152,7 @@ fi
 
 # apache-spark
 brew tap homebrew/cask-versions
-brew_cask_install_check homebrew/cask-versions/adoptopenjdk8
 brew_install_check apache-spark
-
-
 
 # Conda
 if [ ! -d "$(expandPath ~/miniconda)" ] && [ ! -d "$(expandPath ~/anaconda)" ];
@@ -181,11 +178,6 @@ fi
 # Postman
 brew_cask_install_check postman
 
-
-# lua Installation
-# Needed for z.lua
-brew_install_check lua
-
 # R Installation
 optional_install r
 brew_cask_install_check rstudio
@@ -197,6 +189,9 @@ optional_install julia
 
 # Docker
 optional_install docker
+
+# Code Completions
+poetry completions zsh > ~/.zfunc/_poetry
 
 
 # Cleanup

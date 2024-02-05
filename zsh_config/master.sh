@@ -54,8 +54,17 @@ source $BOOT_SCRIPTS_DIR/theming_10k.sh
 source $BOOT_SCRIPTS_DIR/env_setup.sh
 source $BOOT_SCRIPTS_DIR/aliases.sh
 source $BOOT_SCRIPTS_DIR/utilities.sh
-source $BOOT_SCRIPTS_DIR/antidote.sh
 
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init --path)"
+    eval "$(pyenv init -)"
+fi
+if which pyenv-virtualenv-init > /dev/null; then 
+    eval "$(pyenv virtualenv-init -)"; 
+fi
+
+source $BOOT_SCRIPTS_DIR/antidote.sh
+source $BOOT_SCRIPTS_DIR/post_zsh_setup.sh
 
 unset BOOT_SCRIPTS_DIR
 
