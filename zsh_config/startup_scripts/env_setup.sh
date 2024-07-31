@@ -20,6 +20,8 @@ export PATH="$POETRY_HOME:$PATH"
 # Pipx
 export PATH="$PATH:$HOME/.local/bin"
 
+# ZSH Autoquoter
+export ZAQ_PREFIXES=('git commit -m')
 
 # Use vi
 export VISUAL=vim

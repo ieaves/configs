@@ -1,18 +1,14 @@
 romkatv/powerlevel10k depth:1
 
-zsh-users/zsh-completions
-
 ohmyzsh/ohmyzsh path:plugins/git
 ohmyzsh/ohmyzsh path:plugins/colored-man-pages
 ohmyzsh/ohmyzsh path:plugins/magic-enter
-ohmyzsh/ohmyzsh path:plugins/1password
-ohmyzsh/ohmyzsh path:plugins/hitchhiker
 ohmyzsh/ohmyzsh path:plugins/1password
 ohmyzsh/ohmyzsh path:plugins/aws
 
 romkatv/zsh-bench kind:path
 
-ianthehenry/zsh-autoquoter
+# ianthehenry/zsh-autoquoter
 b4b4r07/enhancd use:"init.sh"
 wfxr/forgit
 MichaelAquilina/zsh-autoswitch-virtualenv

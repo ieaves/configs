@@ -33,6 +33,7 @@ brew_install_check eza
 brew_cask_install_check obsidian
 brew_cask_install_check mark-text
 brew_cask_install_check speedcrunch
+brew_cask_install_check proxy-audio-device
 
 # Setup Konfig
 kubectl krew install konfig
