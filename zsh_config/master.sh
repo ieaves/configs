@@ -1,4 +1,5 @@
 #!/bin/bash
+
 export $(cat ${CONFIG_DIR}/settings.txt | xargs)
 
 PROFILE=${PROFILE:-false}
@@ -13,16 +14,10 @@ if $PROFILE; then
 fi
 
 autoload -Uz +X compinit promptinit
+promptinit
+compinit
 
-# suppressed errors here because stat fails on linux for some reason
-# checks whether the current day of the year is different from the modification day of the year
-if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump &> /dev/null)&> /dev/null ]; then
-  promptinit
-  compinit
-else
-  promptinit -C
-  compinit -C
-fi
+
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -30,16 +25,6 @@ fi
 export POWERLEVEL9K_INSTANT_PROMPT=verbose
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-if [ -z ${ANACONDA+x} ]; then
-  if [ -d ~/anaconda3 ]; then
-      ANACONDA=anaconda3
-  elif [ -d ~/anaconda ]; then
-      ANACONDA=anaconda
-  else
-      ANACONDA=miniconda
-  fi
 fi
 
 if [ -z ${USERNAME+x} ]; then
@@ -55,14 +40,6 @@ source $BOOT_SCRIPTS_DIR/env_setup.sh
 source $BOOT_SCRIPTS_DIR/aliases.sh
 source $BOOT_SCRIPTS_DIR/utilities.sh
 
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init --path)"
-    eval "$(pyenv init -)"
-fi
-if which pyenv-virtualenv-init > /dev/null; then 
-    eval "$(pyenv virtualenv-init -)"; 
-fi
-
 source $BOOT_SCRIPTS_DIR/antidote.sh
 source $BOOT_SCRIPTS_DIR/post_zsh_setup.sh
 
@@ -72,7 +49,7 @@ source <(kubectl completion zsh)
 zstyle ':completion:*' menu select
 fpath+=~/.zfunc
 
-
 if $PROFILE; then
   zprof
 fi
+

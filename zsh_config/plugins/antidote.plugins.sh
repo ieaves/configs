@@ -11,7 +11,7 @@ romkatv/zsh-bench kind:path
 # ianthehenry/zsh-autoquoter
 b4b4r07/enhancd use:"init.sh"
 wfxr/forgit
-MichaelAquilina/zsh-autoswitch-virtualenv
+# MichaelAquilina/zsh-autoswitch-virtualenv
 
 zsh-users/zsh-history-substring-search
 zsh-users/zsh-autosuggestions
@@ -24,4 +24,4 @@ MenkeTechnologies/zsh-cargo-completion
 zsh-users/zsh-completions
 chr-fritz/docker-completion.zshplugin
 sunlei/zsh-ssh
-ohmyzsh/ohmyzsh path:plugins/pyenv
+# ohmyzsh/ohmyzsh path:plugins/pyenv
