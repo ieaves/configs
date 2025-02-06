@@ -11,7 +11,7 @@ romkatv/zsh-bench kind:path
 # ianthehenry/zsh-autoquoter
 b4b4r07/enhancd use:"init.sh"
 wfxr/forgit
-# MichaelAquilina/zsh-autoswitch-virtualenv
+MichaelAquilina/zsh-autoswitch-virtualenv
 
 zsh-users/zsh-history-substring-search
 zsh-users/zsh-autosuggestions
