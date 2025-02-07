@@ -11,6 +11,7 @@ fi
 
 source $antidote_dir/antidote.zsh
 
+
 # compares the two files to see if they've changed
 if [[ ! $plugins_txt -nt $config_plugins_txt ]]; then
     rm $plugins_txt
