@@ -11,10 +11,28 @@ optional_install(){
 }
 
 
+krew_install_check(){
+    PLUGIN_NAME=$1
+
+    # Check if the plugin name was provided
+    if [ -z "$1" ]; then
+        echo "$1 already installed"
+    fi
+
+    # Check if the plugin is installed via Krew
+    if kubectl krew list | grep -qw "$1"; then
+        echo "$1 already installed"
+    else
+        echo "Plugin '$1' is NOT installed via Krew. Installing..."
+        kubectl krew install "$1"
+    fi
+}
+
+
 brew_install_check(){
     APPLICATION=$1
     COMMAND=${2:-"brew install $APPLICATION"}
-    if brew info $APPLICATION  | grep "Not installed" &>/dev/null;
+    if brew info  --formula $APPLICATION | grep "Not installed" &>/dev/null;
     then
         echo "Installing $APPLICATION"
         $COMMAND

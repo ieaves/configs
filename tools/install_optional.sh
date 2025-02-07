@@ -18,8 +18,6 @@ else
 
 fi
 
-
-
 # Asana
 if ! test /Applications/asana-*.app; then
     echo "Nativefie Asana"
