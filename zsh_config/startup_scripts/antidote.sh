@@ -1,24 +1,16 @@
 #!/bin/bash
 
-antidote_dir=${ZDOTDIR:-~}/.antidote
-config_plugins_txt=$CONFIG_DIR/plugins/antidote.plugins.sh
-plugins_txt=${ZDOTDIR:-~}/.zsh_plugins.txt
-static_file=${antidote_dir}/.zsh_plugins.zsh
+config_plugins_file=$CONFIG_DIR/plugins/antidote.plugins.sh
+zsh_plugins=${ZDOTDIR:-~}/.zsh_plugins
+zsh_plugins_file=${zsh_plugins}.txt
 
-if [[ ! -d $antidote_dir ]]; then
-    git clone --depth=1 https://github.com/mattmc3/antidote.git $antidote_dir
+source ${BREW_PREFIX}/opt/antidote/share/antidote/antidote.zsh
+
+if [ ! -e ${zsh_plugins_file} ] || [ ${config_plugins_file} -nt ${zsh_plugins_file} ]; then
+    echo "Copying plugins file from ${config_plugins_file} to ${zsh_plugins_file}"
+    cp ${config_plugins_file} ${zsh_plugins_file}
 fi
 
-source $antidote_dir/antidote.zsh
+antidote load
 
-
-# compares the two files to see if they've changed
-if [[ ! $plugins_txt -nt $config_plugins_txt ]]; then
-    rm $plugins_txt
-    cp ${config_plugins_txt} ${plugins_txt}
-    antidote bundle < $plugins_txt > $static_file   
-fi
-
-source $static_file 
-unset antidote_dir plugins_txt static_file config_plugins_txt
-
+unset config_plugins_txt zsh_plugins

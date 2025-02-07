@@ -4,10 +4,6 @@ export $(cat ${CONFIG_DIR}/settings.txt | xargs)
 
 PROFILE=${PROFILE:-false}
 
-if [ -d '/home/linuxbrew/.linuxbrew/bin/brew' ];
-then
-    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-fi
 
 if $PROFILE; then
   zmodload zsh/zprof
@@ -16,7 +12,6 @@ fi
 autoload -Uz +X compinit promptinit
 promptinit
 compinit
-
 
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -35,19 +30,19 @@ fi
 BOOT_SCRIPTS_DIR=$CONFIG_DIR/startup_scripts
 
 
-source $BOOT_SCRIPTS_DIR/theming_10k.sh
+# source $BOOT_SCRIPTS_DIR/theming_10k.sh
 source $BOOT_SCRIPTS_DIR/env_setup.sh
+source $BOOT_SCRIPTS_DIR/starship.sh
 source $BOOT_SCRIPTS_DIR/aliases.sh
 source $BOOT_SCRIPTS_DIR/utilities.sh
 
 source $BOOT_SCRIPTS_DIR/antidote.sh
 source $BOOT_SCRIPTS_DIR/post_zsh_setup.sh
 
+
 unset BOOT_SCRIPTS_DIR
 
-source <(kubectl completion zsh)
-zstyle ':completion:*' menu select
-fpath+=~/.zfunc
+eval "$(pyenv init --path)"
 
 if $PROFILE; then
   zprof

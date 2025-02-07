@@ -1,27 +1,28 @@
-romkatv/powerlevel10k depth:1
+# Theming
+# romkatv/powerlevel10k
 
+# Utilities
+getantidote/use-omz
 ohmyzsh/ohmyzsh path:plugins/colored-man-pages
 ohmyzsh/ohmyzsh path:plugins/magic-enter
-
 romkatv/zsh-bench kind:path
+babarot/enhancd 
 
-# ianthehenry/zsh-autoquoter
-b4b4r07/enhancd use:"init.sh"
-wfxr/forgit
+# wfxr/forgit
 MichaelAquilina/zsh-autoswitch-virtualenv
+Aloxaf/fzf-tab
+jeffreytse/zsh-vi-mode
 
-zsh-users/zsh-history-substring-search
+# Syntax Highlighting
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-syntax-highlighting
-# zdharma-continuum/fast-syntax-highlighting
-Aloxaf/fzf-tab
+zsh-users/zsh-history-substring-search # has to load after syntax highlighting
 
 # Autocompletions
 sinetoami/antibody-completion
 3v1n0/zsh-bash-completions-fallback
 MenkeTechnologies/zsh-cargo-completion
 zsh-users/zsh-completions
-chr-fritz/docker-completion.zshplugin
 sunlei/zsh-ssh
 ohmyzsh/ohmyzsh path:plugins/1password
 ohmyzsh/ohmyzsh path:plugins/aws
@@ -30,4 +31,5 @@ ohmyzsh/ohmyzsh path:plugins/docker
 ohmyzsh/ohmyzsh path:plugins/kubectl
 ohmyzsh/ohmyzsh path:plugins/brew
 ohmyzsh/ohmyzsh path:plugins/macos
-# ohmyzsh/ohmyzsh path:plugins/pyenv
+ohmyzsh/ohmyzsh path:plugins/poetry
+ohmyzsh/ohmyzsh path:plugins/pyenv
