@@ -1,48 +1,37 @@
 #!/bin/bash
 
-export $(cat ${CONFIG_DIR}/settings.txt | xargs)
+# Set configuration directory
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    # Script is executed, not sourced
+    CONFIG_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+else
+    # Script is sourced
+    CONFIG_DIR="$(cd "$(dirname "${0}")" && pwd)"
+fi
+BOOT_SCRIPTS_DIR=$CONFIG_DIR/startup_scripts
 
-PROFILE=${PROFILE:-false}
-
+# Sets environment variables
+source ${CONFIG_DIR}/settings.env
 
 if $PROFILE; then
   zmodload zsh/zprof
 fi
 
+# Loads zsh
 autoload -Uz +X compinit promptinit
 promptinit
 compinit
 
-
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-export POWERLEVEL9K_INSTANT_PROMPT=verbose
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-if [ -z ${USERNAME+x} ]; then
-  USERNAME=$USER;
-fi
-
-# Theming has to come before zsh_setup
-BOOT_SCRIPTS_DIR=$CONFIG_DIR/startup_scripts
-
-
-# source $BOOT_SCRIPTS_DIR/theming_10k.sh
-source $BOOT_SCRIPTS_DIR/env_setup.sh
+# If enabling 10k remember to uncomment it in the antidote plugins
 source $BOOT_SCRIPTS_DIR/starship.sh
+# source $BOOT_SCRIPTS_DIR/theming_10k.sh
+
+
+source $BOOT_SCRIPTS_DIR/startup_commands.sh
 source $BOOT_SCRIPTS_DIR/aliases.sh
 source $BOOT_SCRIPTS_DIR/utilities.sh
-
 source $BOOT_SCRIPTS_DIR/antidote.sh
-source $BOOT_SCRIPTS_DIR/post_zsh_setup.sh
-
-
 unset BOOT_SCRIPTS_DIR
-
-eval "$(pyenv init --path)"
 
 if $PROFILE; then
   zprof

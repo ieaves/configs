@@ -1,5 +1,5 @@
 # Brew Directory
-export BREW_PREFIX=$(brew --prefix)
+
 
 # Pyenv
 export PYENV_ROOT="$(pyenv root)"
@@ -10,8 +10,8 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 # zsh-autoswitch
 export venv_type="poetry"
 
-
 # Brew
+export BREW_PREFIX=$(brew --prefix)
 export PATH="/usr/local/sbin:$PATH"
 
 # Poetry
@@ -79,11 +79,6 @@ else
     export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
 fi
 
-# Pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 
 
 # Pipx 
