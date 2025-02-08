@@ -17,6 +17,11 @@ setup_fish:
 install:
 	@bash tools/install.sh
 
+## Stash brew bundle
+brew_bundle:
+	@rm brew/Brewfile
+	@cd brew && brew bundle dump
+
 
 #################################################################################
 # Self Documenting Commands                                                     #

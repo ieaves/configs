@@ -6,7 +6,7 @@ getantidote/use-omz
 ohmyzsh/ohmyzsh path:plugins/colored-man-pages
 ohmyzsh/ohmyzsh path:plugins/magic-enter
 romkatv/zsh-bench kind:path
-babarot/enhancd 
+# babarot/enhancd 
 
 # wfxr/forgit
 MichaelAquilina/zsh-autoswitch-virtualenv
