@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Set configuration directory
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
     # Script is executed, not sourced
     CONFIG_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -8,6 +7,8 @@ else
     # Script is sourced
     CONFIG_DIR="$(cd "$(dirname "${0}")" && pwd)"
 fi
+
+export CONFIG_DIR=${CONFIG_DIR}
 BOOT_SCRIPTS_DIR=$CONFIG_DIR/startup_scripts
 
 # Sets environment variables
@@ -31,7 +32,10 @@ source $BOOT_SCRIPTS_DIR/startup_commands.sh
 source $BOOT_SCRIPTS_DIR/aliases.sh
 source $BOOT_SCRIPTS_DIR/utilities.sh
 source $BOOT_SCRIPTS_DIR/antidote.sh
+source $BOOT_SCRIPTS_DIR/post_startup_commands.sh
 unset BOOT_SCRIPTS_DIR
+
+
 
 if $PROFILE; then
   zprof

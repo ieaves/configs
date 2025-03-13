@@ -7,9 +7,9 @@ add_newline = true
 palette = 'gruvbox_dark'
 
 format = """
-[](color_orange)\
-$os\
 $username\
+$hostname\
+[](fg:color_orange)\
 [](bg:color_yellow fg:color_orange)\
 $directory\
 [](fg:color_yellow bg:color_aqua)\
@@ -154,3 +154,15 @@ vimcmd_symbol = '[](bold fg:color_green)'
 vimcmd_replace_one_symbol = '[](bold fg:color_purple)'
 vimcmd_replace_symbol = '[](bold fg:color_purple)'
 vimcmd_visual_symbol = '[](bold fg:color_yellow)'
+
+[hostname]
+ssh_only = true
+ssh_symbol = '🌐 '
+format = '[$ssh_symbol$hostname]($style) '
+trim_at = '.companyname.com'
+disabled = false
+
+[shell]
+disabled = false
+format ="[ $indicator]($style)"
+style = "bg:color_orange"

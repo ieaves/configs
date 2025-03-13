@@ -1,6 +1,3 @@
-# Brew Directory
-
-
 # Pyenv
 export PYENV_ROOT="$(pyenv root)"
 export PATH="$PYENV_ROOT/bin:$PATH"
