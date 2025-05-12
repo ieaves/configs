@@ -11,7 +11,7 @@ alias readlink='greadlink'
 alias cursor='open -a /Applications/Cursor.app'
 
 # as per https://github.com/pyenv/pyenv/issues/106
-alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
+# alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 
 
 

@@ -35,8 +35,6 @@ source $BOOT_SCRIPTS_DIR/antidote.sh
 source $BOOT_SCRIPTS_DIR/post_startup_commands.sh
 unset BOOT_SCRIPTS_DIR
 
-
-
 if $PROFILE; then
   zprof
 fi

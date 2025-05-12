@@ -32,4 +32,4 @@ ohmyzsh/ohmyzsh path:plugins/kubectl
 ohmyzsh/ohmyzsh path:plugins/brew
 ohmyzsh/ohmyzsh path:plugins/macos
 ohmyzsh/ohmyzsh path:plugins/poetry
-ohmyzsh/ohmyzsh path:plugins/pyenv
+# ohmyzsh/ohmyzsh path:plugins/pyenv

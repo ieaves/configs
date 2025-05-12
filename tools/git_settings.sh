@@ -15,5 +15,9 @@ git config --global color.diff.old        "red bold"
 git config --global color.diff.new        "green bold"
 git config --global color.diff.whitespace "red reverse"
 
+# Configuring default signoff 
+git config --global commit.cleanup scissors
+git config --global format.signoff true
+
 # Set up global gitignore
 git config --global core.excludesfile ~/.gitignore_global

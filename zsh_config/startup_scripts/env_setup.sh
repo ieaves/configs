@@ -5,7 +5,10 @@ export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 # zsh-autoswitch
-export venv_type="poetry"
+export venv_type="uv"
+
+# UV Venv
+export UV_VENV_PATH="$(pwd)/.venv"
 
 # Brew
 export BREW_PREFIX=$(brew --prefix)
