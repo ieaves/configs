@@ -18,6 +18,7 @@ git config --global color.diff.whitespace "red reverse"
 # Configuring default signoff 
 git config --global commit.cleanup scissors
 git config --global format.signoff true
+git config --global alias.commits "commit -s"
 
 # Set up global gitignore
 git config --global core.excludesfile ~/.gitignore_global
