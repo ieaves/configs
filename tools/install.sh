@@ -5,10 +5,10 @@ BASEDIR=$(dirname "$(readlink -f "$0")")
 . $BASEDIR/utilities.sh
 
 # Setting up homebrew
-optional_install brew 'bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh -c"'
+optional_install brew 'bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
 
 echo "Updating Homebrew"
-cd ../brew && brew bundle && cd ${BASEDIR}
+cd $BASEDIR/../brew && brew bundle && cd ${BASEDIR}
 
 # General tools
 optional_install htop
@@ -78,7 +78,7 @@ optional_install docker
 
 # Setup global gitignore
 echo "Setting up global gitignore"
-cp $SCRIPTPATH/../git/gitignore_global ~/.gitignore_global
+cp $BASEDIR/../git/gitignore_global ~/.gitignore_global
 
 # Configure git global settings
 bash ${BASEDIR}/git_settings.sh

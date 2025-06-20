@@ -12,6 +12,7 @@ export CONFIG_DIR=${CONFIG_DIR}
 BOOT_SCRIPTS_DIR=$CONFIG_DIR/startup_scripts
 
 # Sets environment variables
+source $BOOT_SCRIPTS_DIR/env_setup.sh
 source ${CONFIG_DIR}/settings.env
 
 if $PROFILE; then
@@ -22,6 +23,7 @@ fi
 autoload -Uz +X compinit promptinit
 promptinit
 compinit
+
 
 # If enabling 10k remember to uncomment it in the antidote plugins
 source $BOOT_SCRIPTS_DIR/starship.sh

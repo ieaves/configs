@@ -1,8 +1,8 @@
-# Pyenv
-export PYENV_ROOT="$(pyenv root)"
-export PATH="$PYENV_ROOT/bin:$PATH"
-export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+# # Pyenv
+# export PYENV_ROOT="$(pyenv root)"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
+# export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 # zsh-autoswitch
 export venv_type="uv"
@@ -11,6 +11,7 @@ export venv_type="uv"
 export UV_VENV_PATH="$(pwd)/.venv"
 
 # Brew
+eval $(/opt/homebrew/bin/brew shellenv)
 export BREW_PREFIX=$(brew --prefix)
 export PATH="/usr/local/sbin:$PATH"
 

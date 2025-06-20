@@ -15,6 +15,7 @@ setup_fish:
 
 ## Install basic requirements
 install:
+	@eval "$(/opt/homebrew/bin/brew shellenv)"
 	@bash tools/install.sh
 
 ## Stash brew bundle
