@@ -60,13 +60,11 @@ brew search '/font-.*-nerd-font/' | awk '{ print $1 }' | brew_cask_install_check
 # brew_cask_install_check font-shure-tech-mono-nerd-font
 # brew_cask_install_check font-meslo-lg-nerd-font
 
-
 # Folder Based general utils
 optional_install Node
 optional_install ranger
 optional_install fzy
 optional_install Java
-
 
 # Vim prep
 optional_install vim
