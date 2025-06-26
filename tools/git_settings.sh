@@ -25,6 +25,10 @@ git config --global core.excludesfile ~/.gitignore_global
 
 # General settings
 git config --global push.autoSetupRemote true
+git config --global user.email "ian.k.eaves@gmail.com"
+git config --global user.name "Ian Eaves"
+
+# Set up SSH signing for commits
 git config --global user.signingkey "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICBM4o387AUR4oCHBQ8uRE9bP5vizyeneuAZ82/AgMoD"
 git config --global gpg.format ssh
 git config --global gpg.ssh.program "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
