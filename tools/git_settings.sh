@@ -33,4 +33,3 @@ git config --global user.signingkey "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICBM4o3
 git config --global gpg.format ssh
 git config --global gpg.ssh.program "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
 git config --global commit.gpgsign true
-
