@@ -31,8 +31,8 @@ export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 export ANTIDOTE_DIR=${BREW_PREFIX}/opt/antidote/share/antidote
 
 # ZSH Autoquoter configs
-export ZAQ_PREFIXES=('git commit -m' 'ssh *')
-export ZSH_HIGHLIGHT_HIGHLIGHTERS=ZSH_HIGHLIGHT_HIGHLIGHTERS+(zaq)
+# export ZAQ_PREFIXES=('git commit -m' 'ssh *')
+# export ZSH_HIGHLIGHT_HIGHLIGHTERS=ZSH_HIGHLIGHT_HIGHLIGHTERS+(zaq)
 
 # Kustomize Plugin Path
 export XDG_CONFIG_HOME="$HOME/.config"
