@@ -9,7 +9,7 @@ romkatv/zsh-bench kind:path
 # babarot/enhancd 
 
 # wfxr/forgit
-MichaelAquilina/zsh-autoswitch-virtualenv
+# MichaelAquilina/zsh-autoswitch-virtualenv
 Aloxaf/fzf-tab
 jeffreytse/zsh-vi-mode
 
