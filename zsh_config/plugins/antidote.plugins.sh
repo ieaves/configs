@@ -6,6 +6,7 @@ getantidote/use-omz
 ohmyzsh/ohmyzsh path:plugins/colored-man-pages
 ohmyzsh/ohmyzsh path:plugins/magic-enter
 romkatv/zsh-bench kind:path
+lukechilds/zsh-nvm
 # babarot/enhancd 
 
 # wfxr/forgit
