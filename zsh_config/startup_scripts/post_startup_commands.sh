@@ -4,15 +4,23 @@
 # Auto-activate and deactivate virtualenvs when moving directories
 
 _auto_venv_chpwd() {
-  # If we're leaving a venv, deactivate
-  if [ -n "$VIRTUAL_ENV" ] && [[ "$PWD" != "$VIRTUAL_ENV"* ]]; then
-    echo "Deactivating virtualenv: $(basename "$VIRTUAL_ENV")"
+  # The parent directory of the active venv
+  local venv_dir="${VIRTUAL_ENV%/*}"
+
+  # Only deactivate if we're leaving the venv tree entirely
+  if [[ -n "$VIRTUAL_ENV" && "$PWD" != "$venv_dir"* ]]; then
+    echo "Deactivating virtualenv: $(basename "$venv_dir")"
     deactivate 2>/dev/null || unset VIRTUAL_ENV
   fi
 
-  # If we're entering a directory with .venv and not already in one, activate it
-  if [ -z "$VIRTUAL_ENV" ] && [ -f ".venv/bin/activate" ]; then
-    echo "Activating .venv in $(pwd)"
+  # Activate a new venv if there's a .venv in the current directory
+  if [[ -f ".venv/bin/activate" && "$VIRTUAL_ENV" != "$PWD/.venv" ]]; then
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+      echo "Switching virtualenv: $(basename "$venv_dir") → $(basename "$PWD")"
+      deactivate 2>/dev/null || unset VIRTUAL_ENV
+    else
+      echo "Activating virtualenv: $(basename "$PWD")"
+    fi
     source ".venv/bin/activate"
   fi
 }

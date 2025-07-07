@@ -14,6 +14,8 @@ export UV_VENV_PATH="$(pwd)/.venv"
 eval $(/opt/homebrew/bin/brew shellenv)
 export BREW_PREFIX=$(brew --prefix)
 export PATH="/usr/local/sbin:$PATH"
+export PATH="$BREW_PREFIX/bin:$PATH"
+
 
 # Poetry
 export POETRY_HOME="$HOME/.configs/pypoetry"
@@ -79,12 +81,3 @@ else
     # SQLlite
     export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
 fi
-
-
-
-# Pipx 
-# export PATH="$PATH:/Users/ian/.local/bin"
-
-# Jetbrains
-# export PATH="/Users/jetbrains/.local/bin:$PATH"
-
