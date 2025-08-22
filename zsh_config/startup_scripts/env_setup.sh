@@ -46,38 +46,5 @@ export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 # ZSH Configs
 export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd completion history)
 
-if [ "$(uname -s)" = "Linux" ];
-then 
-else
-    # If you need to update CFLAGS or LDFLAGS installed by brew, add the package name to `applications`
-    applications=('xz' 'lapack' 'curl' 'ruby' 'llvm' 'zlib' 'openssl@3' 'readline' 'unixodbc')
-
-    ldflags=""
-    cppflags=""
-    for app in "${applications[@]}"
-    do
-        name="$(brew --prefix ${app})"
-        ldflags="$ldflags -L$name/lib"
-        cppflags="$cppflags -I$name/include"
-    done
-    export LDFLAGS="$(echo $ldflags | xargs)"
-    export CPPFLAGS="$(echo $cppflags | xargs)"
-
-    unset name ldflags cppflags applications
-    # Openblas
-    export OPENBLAS="$(brew --prefix openblas)"
-    export CFLAGS="-falign-functions=8 ${CFLAGS}"
-
-    # Curl
-    export PATH="/opt/homebrew/opt/curl/bin:$PATH"
-    export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig"
-
-    # Openssl
-    export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
-
-    # zlib
-    export PATH="/opt/homebrew/opt/zlib/bin:$PATH"
-
-    # SQLlite
-    export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
-fi
+# Podman
+export CONTAINERS_MACHINE_PROVIDER=libkrun
