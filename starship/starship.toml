@@ -27,14 +27,14 @@ $haskell\
 $python\
 [](fg:color_blue bg:color_bg3)\
 $docker_context\
-$conda\
+$kubernetes\
 [](fg:color_bg3 bg:color_bg1)\
 $time\
 [ ](fg:color_bg1)\
 $line_break$character
 """
 
-right_format = """[](color_aqua)$kubernetes[ ](color_aqua)"""
+# right_format = """[](color_aqua)$kubernetes[ ](color_aqua)"""
 
 
 [palettes.gruvbox_dark]
@@ -52,9 +52,15 @@ color_yellow = '#d79921'
 
 [kubernetes]
 disabled = false
-style = "bg:color_aqua fg:color_fg0"
-format = '[$symbol$context( \($namespace\))]($style)'
+style = "bg:color_bg3"
+format = '[[ $symbol($context) ](fg:#83a598 bg:color_bg3)]($style)'
+# style = "bg:color_aqua fg:color_fg0"
+# format = '[$symbol$context( \($namespace\))]($style)'
 
+[docker_context]
+symbol = ""
+style = "bg:color_bg3"
+format = '[[ $symbol($context) ](fg:#83a598 bg:color_bg3)]($style)'
 
 [directory]
 style = "fg:color_fg0 bg:color_yellow"
@@ -127,11 +133,6 @@ format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 symbol = ""
 style = "bg:color_blue"
 format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
-
-[docker_context]
-symbol = ""
-style = "bg:color_bg3"
-format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
 
 [conda]
 style = "bg:color_bg3"
