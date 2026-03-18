@@ -22,7 +22,11 @@ fi
 # Loads zsh
 autoload -Uz +X compinit promptinit
 promptinit
-compinit
+if [[ -n ${ZDOTDIR:-~}/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
 
 
 # If enabling 10k remember to uncomment it in the antidote plugins

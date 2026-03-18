@@ -1,4 +1,3 @@
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 #[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Auto-activate and deactivate virtualenvs when moving directories

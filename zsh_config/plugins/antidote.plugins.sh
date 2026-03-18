@@ -5,9 +5,8 @@
 getantidote/use-omz
 ohmyzsh/ohmyzsh path:plugins/colored-man-pages
 # ohmyzsh/ohmyzsh path:plugins/magic-enter
-romkatv/zsh-bench kind:path
 lukechilds/zsh-nvm
-# babarot/enhancd 
+# babarot/enhancd
 
 # wfxr/forgit
 # MichaelAquilina/zsh-autoswitch-virtualenv
@@ -20,8 +19,6 @@ zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-history-substring-search # has to load after syntax highlighting
 
 # Autocompletions
-sinetoami/antibody-completion
-3v1n0/zsh-bash-completions-fallback
 MenkeTechnologies/zsh-cargo-completion
 zsh-users/zsh-completions
 sunlei/zsh-ssh
@@ -34,5 +31,4 @@ ohmyzsh/ohmyzsh path:plugins/brew
 ohmyzsh/ohmyzsh path:plugins/macos
 ohmyzsh/ohmyzsh path:plugins/uv
 ohmyzsh/ohmyzsh path:plugins/gcloud
-ohmyzsh/ohmyzsh path:plugins/docker
 ohmyzsh/ohmyzsh path:plugins/docker-compose
