@@ -15,6 +15,7 @@ $directory\
 [](fg:color_yellow bg:color_aqua)\
 $git_branch\
 $git_status\
+$git_state\
 [](fg:color_aqua bg:color_blue)\
 $c\
 $rust\
@@ -25,16 +26,15 @@ $java\
 $kotlin\
 $haskell\
 $python\
-[](fg:color_blue bg:color_bg3)\
-$docker_context\
-$kubernetes\
-[](fg:color_bg3 bg:color_bg1)\
+[](fg:color_blue bg:color_bg1)\
 $time\
+$cmd_duration\
+$jobs\
 [ ](fg:color_bg1)\
 $line_break$character
 """
 
-# right_format = """[](color_aqua)$kubernetes[ ](color_aqua)"""
+right_format = """[](fg:color_bg3)$docker_context$kubernetes[](fg:color_bg3)"""
 
 
 [palettes.gruvbox_dark]
@@ -95,7 +95,7 @@ style = "bg:color_blue"
 format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 
 [c]
-symbol = " "
+symbol = ""
 style = "bg:color_blue"
 format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 
@@ -143,6 +143,19 @@ disabled = false
 time_format = "%R"
 style = "bg:color_bg1"
 format = '[[  $time ](fg:color_fg0 bg:color_bg1)]($style)'
+
+[git_state]
+style = "bg:color_aqua"
+format = '[[ $state( $progress_current/$progress_total) ](fg:color_fg0 bg:color_aqua)]($style)'
+
+[cmd_duration]
+min_time = 2_000
+style = "bg:color_bg1"
+format = '[[ $duration ](fg:color_fg0 bg:color_bg1)]($style)'
+
+[jobs]
+style = "bg:color_bg1"
+format = '[[ $number ](fg:color_fg0 bg:color_bg1)]($style)'
 
 [line_break]
 disabled = false
