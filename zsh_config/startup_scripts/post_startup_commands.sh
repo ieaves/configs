@@ -26,3 +26,4 @@ _auto_venv_chpwd() {
 
 autoload -U add-zsh-hook
 add-zsh-hook chpwd _auto_venv_chpwd
+_auto_venv_chpwd # run when a new terminal is created as well.
