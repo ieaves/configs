@@ -45,3 +45,7 @@ export NVM_LAZY_LOAD=true
 
 # Podman
 export CONTAINERS_MACHINE_PROVIDER=libkrun
+
+# Codex
+export HOMEASSISTANT_TOKEN="$(security find-generic-password -a "$USER" -s codex-homeassistant-token -w 2>/dev/null)"
+
