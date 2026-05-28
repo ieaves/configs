@@ -49,7 +49,6 @@ export CONTAINERS_MACHINE_PROVIDER=libkrun
 # Codex
 export HOMEASSISTANT_TOKEN="$(security find-generic-password -a "$USER" -s codex-homeassistant-token -w 2>/dev/null)"
 
-# zoxide doctor: keep the chpwd-hook diagnostic in real terminals, where a
-# broken hook would silently stop frecency tracking. Suppress it under Claude
-# Code, whose ephemeral shells trip the check as a false positive.
-[[ -n $CLAUDECODE ]] && export _ZO_DOCTOR=0
+# zoxide doctor: the chpwd-hook diagnostic; our hook is registered correctly,
+# so the check only produces false positives in non-interactive/snapshot shells.
+export _ZO_DOCTOR=0
